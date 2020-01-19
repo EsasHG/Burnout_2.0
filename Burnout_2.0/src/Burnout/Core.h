@@ -9,3 +9,5 @@
 #else
 	#error Burnout only supports windows!
 #endif // BO_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)
