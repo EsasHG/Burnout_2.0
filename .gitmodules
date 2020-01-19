@@ -1,0 +1,3 @@
+[submodule "Burnout_2.0/vendor/spdlog"]
+	path = Burnout_2.0/vendor/spdlog
+	url = https://github.com/gabime/spdlog

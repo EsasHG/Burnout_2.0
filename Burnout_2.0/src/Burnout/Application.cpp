@@ -1,6 +1,4 @@
 #include "Application.h"
-
-#include <iostream>
 namespace Burnout
 {
 	Application::Application()
@@ -15,8 +13,7 @@ namespace Burnout
 	{
 		while (true)
 		{
-			std::cout << "Burnout Runs! ";
-
+			
 		}
 	}
 }
