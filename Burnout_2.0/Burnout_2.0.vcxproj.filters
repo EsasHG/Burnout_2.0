@@ -5,7 +5,7 @@
       <UniqueIdentifier>{94FB7BF5-00DB-FA90-09F3-8567755161F2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Burnout\Events">
-      <UniqueIdentifier>{d00b0f36-946b-43d1-936e-f6f747c8cd49}</UniqueIdentifier>
+      <UniqueIdentifier>{F858588A-E426-4C90-CDBA-BCB6B92728F5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,9 +19,6 @@
     <ClInclude Include="src\Burnout\EntryPoint.h">
       <Filter>Burnout</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\Log.h">
-      <Filter>Burnout</Filter>
-    </ClInclude>
     <ClInclude Include="src\Burnout\Events\ApplicationEvent.h">
       <Filter>Burnout\Events</Filter>
     </ClInclude>
@@ -33,6 +30,9 @@
     </ClInclude>
     <ClInclude Include="src\Burnout\Events\MouseEvent.h">
       <Filter>Burnout\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Log.h">
+      <Filter>Burnout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
