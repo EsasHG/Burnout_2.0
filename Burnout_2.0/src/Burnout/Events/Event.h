@@ -25,7 +25,7 @@ namespace Burnout
 	{
 		None = 0,
 		EventCategoryApplication	= BIT(0),
-		eventCategoryInput			= BIT(1),
+		EventCategoryInput			= BIT(1),
 		EventCategoryKeyboard		= BIT(2),
 		EventCategoryMouse			= BIT(3),
 		EventCategoryMouseButton	= BIT(4)
