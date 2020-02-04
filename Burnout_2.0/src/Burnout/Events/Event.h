@@ -2,8 +2,6 @@
 
 #include "Burnout/Core.h"
 
-#include <string>
-#include <functional>
 
 namespace Burnout
 {

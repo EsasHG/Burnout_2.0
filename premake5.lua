@@ -18,6 +18,9 @@ project "Burnout_2.0"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}");
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}");
 
+	pchheader "bopch.h"
+	pchsource "Burnout_2.0/src/bopch.cpp"
+
 	files 
 	{
 		"%{prj.name}/src/**.h",

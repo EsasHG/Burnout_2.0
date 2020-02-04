@@ -34,6 +34,7 @@
     <ClInclude Include="src\Burnout\Log.h">
       <Filter>Burnout</Filter>
     </ClInclude>
+    <ClInclude Include="src\bopch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Burnout\Log.cpp">
       <Filter>Burnout</Filter>
     </ClCompile>
+    <ClCompile Include="src\bopch.cpp" />
   </ItemGroup>
 </Project>

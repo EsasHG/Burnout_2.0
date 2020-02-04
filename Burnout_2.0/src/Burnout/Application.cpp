@@ -1,3 +1,5 @@
+#include "bopch.h"
+
 #include "Application.h"
 #include "Burnout/Events/ApplicationEvent.h"
 #include "Burnout/Events/KeyEvent.h"
