@@ -5,12 +5,13 @@
 #include "Burnout/Events/KeyEvent.h"
 #include "Burnout/Log.h"
 
+#include <GLFW/glfw3.h>
 
 namespace Burnout
 {
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 	Application::~Application()
 	{
@@ -18,28 +19,13 @@ namespace Burnout
 	}
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		KeyPressedEvent k(14, 0);
-		if (e.IsInCategory(EventCategoryApplication))
-		{
-			BO_TRACE(e);
-		}
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			BO_TRACE(e);
-		}
-		if (k.GetStaticType() == EventType::KeyPressed)
-		{
-			BO_TRACE(k);
-		}
-		if (k.GetStaticType() == EventType::KeyReleased)
-		{
-			BO_ERROR(k);
-		}
 
-		while (true)
+
+		while (m_Running)
 		{
-			
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
 		}
 	}
 }

@@ -155,6 +155,8 @@
     <ClInclude Include="src\Burnout\Events\MouseEvent.h" />
     <ClInclude Include="src\Burnout\Log.h" />
     <ClInclude Include="src\bopch.h" />
+    <ClInclude Include="src\Burnout\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp" />
@@ -162,6 +164,7 @@
     <ClCompile Include="src\bopch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
