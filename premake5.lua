@@ -10,6 +10,12 @@ workspace "Burnout_2.0"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+	IncludeDirs = {}
+	IncludeDirs["GLFW"] = "Burnout_2.0/vendor/GLFW/include"
+
+	include "Burnout_2.0/vendor/GLFW"
+
+
 project "Burnout_2.0"
 	location "Burnout_2.0"
 	kind "SharedLib"
@@ -30,7 +36,14 @@ project "Burnout_2.0"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDirs.GLFW}"
+	}
+
+	links 
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
