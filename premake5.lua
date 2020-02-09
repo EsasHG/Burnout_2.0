@@ -1,5 +1,6 @@
 workspace "Burnout_2.0"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -15,15 +16,18 @@ workspace "Burnout_2.0"
 	IncludeDirs["Glad"] = "Burnout_2.0/vendor/Glad/include"
 	IncludeDirs["ImGui"] = "Burnout_2.0/vendor/imgui"
 
-	include "Burnout_2.0/vendor/GLFW"
-	include "Burnout_2.0/vendor/Glad"
-	include "Burnout_2.0/vendor/imgui"
+	group "Dependencies"
+		include "Burnout_2.0/vendor/GLFW"
+		include "Burnout_2.0/vendor/Glad"
+		include "Burnout_2.0/vendor/imgui"
 
+	group ""
 
 project "Burnout_2.0"
 	location "Burnout_2.0"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}");
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}");
@@ -57,7 +61,6 @@ project "Burnout_2.0"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -70,23 +73,23 @@ project "Burnout_2.0"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "HZ_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HZ_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		symbols "On"
 
 
@@ -94,6 +97,8 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
+
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}");
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}");
@@ -116,7 +121,6 @@ project "Sandbox"
 	}
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -126,15 +130,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "HZ_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HZ_DIST"
-		buildoptions "/MDd"
+		runtime "Release"
 		symbols "On"

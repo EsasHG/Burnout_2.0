@@ -103,9 +103,7 @@ namespace Burnout
 	bool ImGuiLayer::OnMouseButtonPressed(MouseButtonPressedEvent& e)
 	{
 		ImGuiIO& io = ImGui::GetIO();
-		
 		io.MouseDown[e.GetMouseButton()] = true;
-		BO_CORE_TRACE("imGui layer: {0}, button: {1}", e, io.MouseDown[e.GetMouseButton()]);
 
 		return true;
 	}
@@ -114,8 +112,6 @@ namespace Burnout
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		io.MouseDown[e.GetMouseButton()] = false;
-
-		//BO_CORE_TRACE("{0}, button: {1}", e, io.MouseDown[e.GetMouseButton()]);
 
 		return true;
 	}
@@ -126,7 +122,6 @@ namespace Burnout
 		io.MousePos = ImVec2(e.GetX(), e.GetY());
 		
 		return false;
-
 	}
 
 	bool ImGuiLayer::OnMouseScrolled(MouseScrolledEvent& e)

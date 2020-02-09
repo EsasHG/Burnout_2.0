@@ -10,9 +10,13 @@
 	#error Burnout only supports windows!
 #endif // BO_PLATFORM_WINDOWS
 
+#ifdef BO_DEBUG
+	#define BO_ENABLE_ASSERTS
+#endif // !BO_DEBUG
 
 
-#ifdef BO_ENABLE_ASSERTS
+
+#if BO_ENABLE_ASSERTS
 	#define BO_ASSERT(x, ...) {if(!x)) {BO_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
 	#define BO_CORE_ASSERT(x, ...) {if(!(x)) { BO_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
 #else
