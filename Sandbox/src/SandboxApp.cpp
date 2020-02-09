@@ -10,12 +10,12 @@ public:
 
 	void OnUpdate() override
 	{
-		BO_INFO("ExampleLayer::Update");
+		//BO_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(Burnout::Event& event) override
 	{
-		BO_TRACE("{0}", event);
+		//BO_TRACE("{0}", event);
 	}
 
 };
