@@ -8,10 +8,10 @@
       <UniqueIdentifier>{F858588A-E426-4C90-CDBA-BCB6B92728F5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform">
-      <UniqueIdentifier>{70efb3b2-8d8b-46a1-84da-b4bc259e8872}</UniqueIdentifier>
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
-      <UniqueIdentifier>{f7e48f89-3de6-42f1-8b35-3231ca363845}</UniqueIdentifier>
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,27 +37,39 @@
     <ClInclude Include="src\Burnout\Events\MouseEvent.h">
       <Filter>Burnout\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\Log.h">
+    <ClInclude Include="src\Burnout\Layer.h">
       <Filter>Burnout</Filter>
     </ClInclude>
-    <ClInclude Include="src\bopch.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>Platform\Windows</Filter>
+    <ClInclude Include="src\Burnout\LayerStack.h">
+      <Filter>Burnout</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Log.h">
+      <Filter>Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Window.h">
       <Filter>Burnout</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bopch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
       <Filter>Burnout</Filter>
     </ClCompile>
+    <ClCompile Include="src\Burnout\Layer.cpp">
+      <Filter>Burnout</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\LayerStack.cpp">
+      <Filter>Burnout</Filter>
+    </ClCompile>
     <ClCompile Include="src\Burnout\Log.cpp">
       <Filter>Burnout</Filter>
     </ClCompile>
-    <ClCompile Include="src\bopch.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\bopch.cpp" />
   </ItemGroup>
 </Project>
