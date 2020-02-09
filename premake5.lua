@@ -13,9 +13,11 @@ workspace "Burnout_2.0"
 	IncludeDirs = {}
 	IncludeDirs["GLFW"] = "Burnout_2.0/vendor/GLFW/include"
 	IncludeDirs["Glad"] = "Burnout_2.0/vendor/Glad/include"
+	IncludeDirs["ImGui"] = "Burnout_2.0/vendor/imgui"
 
 	include "Burnout_2.0/vendor/GLFW"
 	include "Burnout_2.0/vendor/Glad"
+	include "Burnout_2.0/vendor/imgui"
 
 
 project "Burnout_2.0"
@@ -40,13 +42,16 @@ project "Burnout_2.0"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDirs.GLFW}",
-		"%{IncludeDirs.Glad}"
+		"%{IncludeDirs.Glad}",
+		"%{IncludeDirs.ImGui}"
+
 	}
 
 	links 
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

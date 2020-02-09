@@ -4,3 +4,6 @@
 [submodule "Burnout_2.0/vendor/GLFW"]
 	path = Burnout_2.0/vendor/GLFW
 	url = https://github.com/EsasHG/glfw
+[submodule "Burnout_2.0/vendor/imgui"]
+	path = Burnout_2.0/vendor/imgui
+	url = https://github.com/EsasHG/imgui
