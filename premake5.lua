@@ -12,8 +12,10 @@ workspace "Burnout_2.0"
 
 	IncludeDirs = {}
 	IncludeDirs["GLFW"] = "Burnout_2.0/vendor/GLFW/include"
+	IncludeDirs["Glad"] = "Burnout_2.0/vendor/Glad/include"
 
 	include "Burnout_2.0/vendor/GLFW"
+	include "Burnout_2.0/vendor/Glad"
 
 
 project "Burnout_2.0"
@@ -37,12 +39,14 @@ project "Burnout_2.0"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDirs.GLFW}"
+		"%{IncludeDirs.GLFW}",
+		"%{IncludeDirs.Glad}"
 	}
 
 	links 
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +58,8 @@ project "Burnout_2.0"
 		defines
 		{
 			"BO_PLATFORM_WINDOWS",
-			"BO_BUILD_DLL"
+			"BO_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 
