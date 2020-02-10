@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "Burnout/Events/KeyEvent.h"
 #include "Burnout/Log.h"
-
+#include "Input.h"
 #include <glad/glad.h>
 
 namespace Burnout

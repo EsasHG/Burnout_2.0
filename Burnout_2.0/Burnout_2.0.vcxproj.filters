@@ -65,6 +65,18 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\bopch.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Input.h">
+      <Filter>Burnout</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\KeyCodes.h">
+      <Filter>Burnout</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\MouseButtonCodes.h">
+      <Filter>Burnout</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
@@ -89,5 +101,8 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\bopch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

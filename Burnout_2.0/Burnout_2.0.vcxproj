@@ -154,11 +154,15 @@
     <ClInclude Include="src\Burnout\Events\KeyEvent.h" />
     <ClInclude Include="src\Burnout\Events\MouseEvent.h" />
     <ClInclude Include="src\Burnout\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Burnout\Input.h" />
+    <ClInclude Include="src\Burnout\KeyCodes.h" />
     <ClInclude Include="src\Burnout\Layer.h" />
     <ClInclude Include="src\Burnout\LayerStack.h" />
     <ClInclude Include="src\Burnout\Log.h" />
+    <ClInclude Include="src\Burnout\MouseButtonCodes.h" />
     <ClInclude Include="src\Burnout\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\bopch.h" />
   </ItemGroup>
@@ -169,6 +173,7 @@
     <ClCompile Include="src\Burnout\LayerStack.cpp" />
     <ClCompile Include="src\Burnout\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\bopch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

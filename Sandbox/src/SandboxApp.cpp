@@ -10,12 +10,13 @@ public:
 
 	void OnUpdate() override
 	{
-		//BO_INFO("ExampleLayer::Update");
+		if (Burnout::Input::IsKeyPressed(BO_KEY_TAB))
+			BO_INFO("Tab key is pressed!");
+	
 	}
 
 	void OnEvent(Burnout::Event& event) override
 	{
-		//BO_TRACE("{0}", event);
 	}
 
 };
