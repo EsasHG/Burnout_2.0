@@ -7,3 +7,6 @@
 [submodule "Burnout_2.0/vendor/imgui"]
 	path = Burnout_2.0/vendor/imgui
 	url = https://github.com/EsasHG/imgui
+[submodule "Burnout_2.0/vendor/glm"]
+	path = Burnout_2.0/vendor/glm
+	url = https://github.com/g-truc/glm

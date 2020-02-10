@@ -46,6 +46,12 @@
     <ClInclude Include="src\Burnout\ImGui\ImGuiLayer.h">
       <Filter>Burnout\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Burnout\Input.h">
+      <Filter>Burnout</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\KeyCodes.h">
+      <Filter>Burnout</Filter>
+    </ClInclude>
     <ClInclude Include="src\Burnout\Layer.h">
       <Filter>Burnout</Filter>
     </ClInclude>
@@ -55,28 +61,22 @@
     <ClInclude Include="src\Burnout\Log.h">
       <Filter>Burnout</Filter>
     </ClInclude>
+    <ClInclude Include="src\Burnout\MouseButtonCodes.h">
+      <Filter>Burnout</Filter>
+    </ClInclude>
     <ClInclude Include="src\Burnout\Window.h">
       <Filter>Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\bopch.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>Platform\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\Input.h">
-      <Filter>Burnout</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\KeyCodes.h">
-      <Filter>Burnout</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\MouseButtonCodes.h">
-      <Filter>Burnout</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
@@ -97,12 +97,12 @@
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\bopch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
-      <Filter>Platform\Windows</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

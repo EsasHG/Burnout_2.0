@@ -15,6 +15,7 @@ workspace "Burnout_2.0"
 	IncludeDirs["GLFW"] = "Burnout_2.0/vendor/GLFW/include"
 	IncludeDirs["Glad"] = "Burnout_2.0/vendor/Glad/include"
 	IncludeDirs["ImGui"] = "Burnout_2.0/vendor/imgui"
+	IncludeDirs["glm"] = "Burnout_2.0/vendor/glm"
 
 	group "Dependencies"
 		include "Burnout_2.0/vendor/GLFW"
@@ -47,7 +48,8 @@ project "Burnout_2.0"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDirs.GLFW}",
 		"%{IncludeDirs.Glad}",
-		"%{IncludeDirs.ImGui}"
+		"%{IncludeDirs.ImGui}",
+		"%{IncludeDirs.glm}"
 
 	}
 
@@ -71,7 +73,7 @@ project "Burnout_2.0"
 		}
 
 
-		postbuildcommands
+		postbuildcommands 
 		{
 			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
@@ -112,7 +114,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Burnout_2.0/vendor/spdlog/include",
-		"Burnout_2.0/src"
+		"Burnout_2.0/src",
+		"%{IncludeDirs.glm}"
 	}
 
 	links 
