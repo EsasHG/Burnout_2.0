@@ -1,3 +1,4 @@
+
 workspace "Burnout_2.0"
 	architecture "x64"
 	startproject "Sandbox"
@@ -16,19 +17,22 @@ workspace "Burnout_2.0"
 	IncludeDirs["Glad"] = "Burnout_2.0/vendor/Glad/include"
 	IncludeDirs["ImGui"] = "Burnout_2.0/vendor/imgui"
 	IncludeDirs["glm"] = "Burnout_2.0/vendor/glm"
-
+	
 	group "Dependencies"
 		include "Burnout_2.0/vendor/GLFW"
 		include "Burnout_2.0/vendor/Glad"
 		include "Burnout_2.0/vendor/imgui"
+	
+	
 
 	group ""
 
 project "Burnout_2.0"
 	location "Burnout_2.0"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}");
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}");
@@ -62,7 +66,6 @@ project "Burnout_2.0"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -73,33 +76,28 @@ project "Burnout_2.0"
 		}
 
 
-		postbuildcommands 
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-		}
-
-
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "HZ_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "HZ_DIST"
 		runtime "Release"
-		symbols "On"
+		optimize "on"
 
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}");
@@ -124,7 +122,6 @@ project "Sandbox"
 		"Burnout_2.0"
 	}
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -135,14 +132,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "HZ_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "HZ_DIST"
 		runtime "Release"
-		symbols "On"
+		optimize "on"

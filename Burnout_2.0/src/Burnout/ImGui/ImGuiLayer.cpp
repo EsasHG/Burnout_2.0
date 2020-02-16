@@ -54,9 +54,7 @@ namespace Burnout
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
 		ImGui_ImplOpenGL3_Init("#version 410");
 
-		ImGui::Begin("");
-		ImGui::Text("");
-		ImGui::End();
+
 	}
 
 	void ImGuiLayer::OnDetach()
@@ -84,7 +82,7 @@ namespace Burnout
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
-		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
+		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
 
 		//Rendering
 		ImGui::Render();
