@@ -7,6 +7,8 @@
 #include "Events/Event.h"
 #include "Burnout/Events/ApplicationEvent.h"
 
+#include "Burnout/ImGui/ImGuiLayer.h"
+
 namespace Burnout
 { 
 
@@ -30,6 +32,7 @@ namespace Burnout
 		bool OnWindowClosed(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer = nullptr;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

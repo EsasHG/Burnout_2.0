@@ -115,6 +115,7 @@ project "Sandbox"
 	{
 		"Burnout_2.0/vendor/spdlog/include",
 		"Burnout_2.0/src",
+		"Burnout_2.0/vendor",
 		"%{IncludeDirs.glm}"
 	}
 
