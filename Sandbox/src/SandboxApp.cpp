@@ -6,11 +6,11 @@
 
 #include "imgui/imgui.h"
 
-class ExampleLayer : public Burnout::ImGuiLayer
+class ExampleLayer : public Burnout::Layer
 {
 public:
 	ExampleLayer()
-		:ImGuiLayer()
+		:Layer()
 	{
 	}
 
@@ -22,7 +22,8 @@ public:
 	}
 	virtual void OnImGuiRender() override
 	{
-		ImGui::Begin("Test");
+		bool open = true;
+		ImGui::Begin("Test", &open);
 		ImGui::Text("Hello piss!");
 		ImGui::End();
 	}

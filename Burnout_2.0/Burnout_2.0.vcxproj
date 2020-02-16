@@ -155,7 +155,9 @@
     <ClInclude Include="src\Burnout\LayerStack.h" />
     <ClInclude Include="src\Burnout\Log.h" />
     <ClInclude Include="src\Burnout\MouseButtonCodes.h" />
+    <ClInclude Include="src\Burnout\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Burnout\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\bopch.h" />
@@ -167,6 +169,7 @@
     <ClCompile Include="src\Burnout\Layer.cpp" />
     <ClCompile Include="src\Burnout\LayerStack.cpp" />
     <ClCompile Include="src\Burnout\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\bopch.cpp">

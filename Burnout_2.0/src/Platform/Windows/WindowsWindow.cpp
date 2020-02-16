@@ -5,7 +5,9 @@
 #include "Burnout/Events/MouseEvent.h"
 #include "Burnout/Events/KeyEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
+
+
 
 namespace Burnout
 {
@@ -39,6 +41,7 @@ namespace Burnout
 
 		BO_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
+
 		if (!s_GLFWInitiated)
 		{
 			//TODO: glfwTerminate on system shutdown
@@ -51,10 +54,11 @@ namespace Burnout
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		BO_CORE_ASSERT(status, "Failed to initialize Glad!");
-		glfwSetWindowUserPointer(m_Window,&m_Data);
+		m_Context = new OpenGLContext(m_Window);
+
+		m_Context->Init();
+
+		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
 		// Set GLFW callbacks
@@ -155,8 +159,8 @@ namespace Burnout
 
 	void WindowsWindow::OnUpdate()
 	{
+		m_Context->SwapBuffers();
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
