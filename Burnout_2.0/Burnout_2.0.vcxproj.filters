@@ -84,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="src\bopch.h" />
     <ClInclude Include="src\Burnout\Renderer\Shader.h" />
+    <ClInclude Include="src\Burnout\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Burnout\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
@@ -115,5 +118,8 @@
     </ClCompile>
     <ClCompile Include="src\bopch.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>
