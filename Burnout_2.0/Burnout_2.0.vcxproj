@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Burnout\Renderer\Renderer.h" />
     <ClInclude Include="src\Burnout\Renderer\Buffer.h" />
     <ClInclude Include="src\Burnout\Renderer\Shader.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="src\bopch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Shader.cpp" />
