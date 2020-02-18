@@ -24,9 +24,8 @@ namespace Burnout
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-			
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
+
+		m_VertexArray.reset(VertexArray::Create());
 
 		float vertices[3 * 3] = {
 			-0.5f, 0.5f , 0.0f,
@@ -35,10 +34,7 @@ namespace Burnout
 		};
 
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		m_VertexArray->SetAttribPointer(0);
 
 
 
@@ -111,7 +107,7 @@ namespace Burnout
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
+			m_VertexArray->Bind();
 			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for(Layer* layer : m_LayerStack)
