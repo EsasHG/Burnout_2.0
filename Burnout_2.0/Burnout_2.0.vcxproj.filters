@@ -83,6 +83,7 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\bopch.h" />
+    <ClInclude Include="src\Burnout\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
@@ -113,5 +114,6 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\bopch.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

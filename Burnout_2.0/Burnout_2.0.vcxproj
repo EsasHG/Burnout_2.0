@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Burnout\Renderer\Shader.h" />
     <ClInclude Include="src\Burnout.h" />
     <ClInclude Include="src\Burnout\Application.h" />
     <ClInclude Include="src\Burnout\Core.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="src\bopch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Burnout\Renderer\Shader.cpp" />
     <ClCompile Include="src\Burnout\Application.cpp" />
     <ClCompile Include="src\Burnout\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Burnout\ImGui\ImGuiLayer.cpp" />

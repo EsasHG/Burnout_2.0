@@ -9,6 +9,8 @@
 
 #include "Burnout/ImGui/ImGuiLayer.h"
 
+#include "Burnout/Renderer/Shader.h"
+
 namespace Burnout
 { 
 
@@ -38,6 +40,7 @@ namespace Burnout
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
