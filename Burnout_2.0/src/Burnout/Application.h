@@ -4,7 +4,7 @@
 
 #include "Window.h"
 #include "Burnout/LayerStack.h"
-#include "Events/Event.h"
+#include "Burnout/Events/Event.h"
 #include "Burnout/Events/ApplicationEvent.h"
 
 #include "Burnout/ImGui/ImGuiLayer.h"
@@ -13,10 +13,8 @@
 #include "Burnout/Renderer/Buffer.h"
 #include "Burnout/Renderer/VertexArray.h"
 
-
 namespace Burnout
 { 
-
 	class BURNOUT_API Application
 	{
 	public:

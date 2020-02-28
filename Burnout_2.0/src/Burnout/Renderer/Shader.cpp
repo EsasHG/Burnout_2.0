@@ -11,9 +11,9 @@ namespace Burnout
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:		BO_CORE_ASSERT(false, " RendererAPI::None: is currently not supported"); return nullptr;
+		case RendererAPI::API::None:	BO_CORE_ASSERT(false, " RendererAPI::None: is currently not supported"); return nullptr;
 
-		case RendererAPI::OpenGL:	return new OpenGLShader(vertexSrc, fragmentSrc);
+		case RendererAPI::API::OpenGL:	return new OpenGLShader(vertexSrc, fragmentSrc);
 		default:
 			break;
 		}

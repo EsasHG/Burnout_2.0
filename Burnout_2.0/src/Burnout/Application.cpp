@@ -1,12 +1,11 @@
 #include "bopch.h"
-
 #include "Application.h"
-#include "Burnout/Events/KeyEvent.h"
-#include "Burnout/Log.h"
-#include "Input.h"
-#include "Burnout/Renderer/Shader.h"
 
-#include <glad/glad.h>
+#include "Burnout/Log.h"
+
+#include "Burnout/Renderer/Renderer.h"
+
+#include "Input.h"
 
 namespace Burnout
 {
@@ -35,14 +34,11 @@ namespace Burnout
 
 		std::shared_ptr<VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-
 		BufferLayout layout = {
 			{ShaderDataType::Float3, "a_Position"},
 			{ShaderDataType::Float4, "a_Color"}
 		};
 		vertexBuffer->SetLayout(layout);
-	
-
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned indices[3] = { 0,1,2 };
@@ -168,30 +164,29 @@ namespace Burnout
 		}
 	}
 
-
-
 	void Application::Run()
 	{
 		while (m_Running)
 		{
-			glClearColor(0.11f, 0.11f, 0.11f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 0.11f, 0.11f, 0.11f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_BlueShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
+			Renderer::Submit(m_SquareVA);
+			
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
 
+			Renderer::EndScene();
+				
 			for(Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
 			m_ImGuiLayer->End();
-
 
 			m_Window->OnUpdate();
 		}

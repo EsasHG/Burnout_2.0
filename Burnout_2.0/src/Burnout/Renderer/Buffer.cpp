@@ -2,6 +2,7 @@
 #include "Buffer.h"
 
 #include "Renderer.h"
+
 #include "Platform/OpenGL/OpenGLBuffer.h"
 namespace Burnout
 {
@@ -10,11 +11,9 @@ namespace Burnout
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:		BO_CORE_ASSERT(false, " RendererAPI::None: is currently not supported"); return nullptr;
+			case RendererAPI::API::None:		BO_CORE_ASSERT(false, " RendererAPI::None: is currently not supported"); return nullptr;
 
-		case RendererAPI::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
-		default:
-			break;
+			case RendererAPI::API::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
 		}
 		BO_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
@@ -24,11 +23,11 @@ namespace Burnout
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:		BO_CORE_ASSERT(false, " RendererAPI::None: is currently not supported"); return nullptr;
+			case RendererAPI::API::None:		BO_CORE_ASSERT(false, " RendererAPI::None: is currently not supported"); return nullptr;
 
-		case RendererAPI::OpenGL:	return new OpenGLIndexBuffer(indices, size);
-		default:
-			break;
+			case RendererAPI::API::OpenGL:	return new OpenGLIndexBuffer(indices, size);
+			default:
+				break;
 		}
 		BO_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;

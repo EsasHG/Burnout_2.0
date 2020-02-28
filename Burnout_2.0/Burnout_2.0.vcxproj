@@ -140,11 +140,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
-    <ClInclude Include="src\Burnout\Renderer\Renderer.h" />
-    <ClInclude Include="src\Burnout\Renderer\Buffer.h" />
-    <ClInclude Include="src\Burnout\Renderer\Shader.h" />
     <ClInclude Include="src\Burnout.h" />
     <ClInclude Include="src\Burnout\Application.h" />
     <ClInclude Include="src\Burnout\Core.h" />
@@ -160,35 +155,46 @@
     <ClInclude Include="src\Burnout\LayerStack.h" />
     <ClInclude Include="src\Burnout\Log.h" />
     <ClInclude Include="src\Burnout\MouseButtonCodes.h" />
+    <ClInclude Include="src\Burnout\Renderer\Buffer.h" />
     <ClInclude Include="src\Burnout\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Burnout\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Burnout\Renderer\Renderer.h" />
+    <ClInclude Include="src\Burnout\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Burnout\Renderer\Shader.h" />
+    <ClInclude Include="src\Burnout\Renderer\VertexArray.h" />
     <ClInclude Include="src\Burnout\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\bopch.h" />
-    <ClInclude Include="src\Burnout\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
-    <ClCompile Include="src\Burnout\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Burnout\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Burnout\Renderer\Shader.cpp" />
     <ClCompile Include="src\Burnout\Application.cpp" />
     <ClCompile Include="src\Burnout\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Burnout\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Burnout\Layer.cpp" />
     <ClCompile Include="src\Burnout\LayerStack.cpp" />
     <ClCompile Include="src\Burnout\Log.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\bopch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Burnout\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
