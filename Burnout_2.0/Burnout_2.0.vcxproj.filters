@@ -113,7 +113,9 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\bopch.h" />
-    <ClInclude Include="src\Burnout\Camera.h" />
+    <ClInclude Include="src\Burnout\Cameras\Camera.h" />
+    <ClInclude Include="src\Burnout\Cameras\PerspectiveCamera.h" />
+    <ClInclude Include="src\Burnout\Cameras\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
@@ -174,6 +176,8 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\bopch.cpp" />
-    <ClCompile Include="src\Burnout\Camera.cpp" />
+    <ClCompile Include="src\Burnout\Cameras\Camera.cpp" />
+    <ClCompile Include="src\Burnout\Cameras\PerspectiveCamera.cpp" />
+    <ClCompile Include="src\Burnout\Cameras\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

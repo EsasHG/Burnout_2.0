@@ -7,7 +7,8 @@
 
 #include "Input.h"
 
-#include "Camera.h"
+#include "Cameras/PerspectiveCamera.h"
+#include "Cameras/OrthographicCamera.h"
 
 namespace Burnout
 {
@@ -24,7 +25,7 @@ namespace Burnout
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-		m_EditorCamera = new Camera(m_Window->GetWidth() / m_Window->GetHeight());
+		m_EditorCamera = new PerspectiveCamera((float)m_Window->GetWidth() / (float)m_Window->GetHeight());
 		PushLayer(m_EditorCamera);
 
 		m_VertexArray.reset(VertexArray::Create());
@@ -194,6 +195,7 @@ namespace Burnout
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BO_BIND_EVENT_FN(Application::OnWindowClosed));
+		dispatcher.Dispatch<WindowResizeEvent>(BO_BIND_EVENT_FN(Application::OnWindowResized));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
@@ -234,6 +236,11 @@ namespace Burnout
 	bool Application::OnWindowClosed(WindowCloseEvent& e)
 	{
 		m_Running = false;
+		return true;
+	}
+	bool Application::OnWindowResized(WindowResizeEvent& e)
+	{
+		m_EditorCamera->UpdateProjMatrix((float)e.GetWidth() / (float)e.GetHeight()); //TODO doesnt work properly
 		return true;
 	}
 }
