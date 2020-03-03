@@ -13,6 +13,9 @@ namespace Burnout
 
 		virtual void Bind() const;
 		virtual void Unbind() const;
+
+		virtual void UploadMat4Uniform(std::string UniformName, glm::mat4& mat) const;
+
 	private:
 		uint32_t m_RendererID;
 	

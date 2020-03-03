@@ -49,7 +49,6 @@ namespace Burnout
 			BO_CORE_ASSERT(success, "Could Not Initialize GLFW!");
 
 			glfwSetErrorCallback(GLFWErrorCallback);
-
 			s_GLFWInitiated = true;
 		}
 

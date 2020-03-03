@@ -7,9 +7,10 @@
 
 #include "Input.h"
 
+#include "Camera.h"
+
 namespace Burnout
 {
-	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
 
@@ -23,13 +24,15 @@ namespace Burnout
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
+		m_EditorCamera = new Camera(m_Window->GetWidth() / m_Window->GetHeight());
+		PushLayer(m_EditorCamera);
 
 		m_VertexArray.reset(VertexArray::Create());
 
 		float vertices[3 * 7] = {
-			-0.5f, 0.5f , 0.0f, 1.0f, 0.f, 1.f, 1.f,
-			0.5f , 0.5f , 0.0f, 0.0f, 0.f, 1.f, 1.f,
-			0.0f , -0.5f, 0.0f, 1.0f, 1.f, 0.f, 1.f,
+			-0.5f, 0.5f , -0.5f, 1.0f, 0.f, 1.f, 1.f,
+			0.0f , -0.5f, -0.5f, 1.0f, 1.f, 0.f, 1.f,
+			0.5f , 0.5f , -0.5f, 0.0f, 0.f, 1.f, 1.f,
 		};
 
 		std::shared_ptr<VertexBuffer> vertexBuffer;
@@ -72,19 +75,52 @@ namespace Burnout
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 
+		m_CubeVA.reset(VertexArray::Create());
+		float cubeVertices[3 * 8]
+		{
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,	0.5f, 0.0f,
+			-0.5f,	0.5f, 0.0f,
+
+			-0.5f, -0.5f, -0.5f,
+			 0.5f, -0.5f, -0.5f,
+			 0.5f,	0.5f, -0.5f,
+			-0.5f,	0.5f, -0.5f
+		};
+
+		std::shared_ptr<VertexBuffer> cubeVB;
+		cubeVB.reset(VertexBuffer::Create(cubeVertices, sizeof(squareVertices)));
+
+		cubeVB->SetLayout({
+			{ShaderDataType::Float3, "a_Position"}
+			});
+		m_CubeVA->AddVertexBuffer(cubeVB);
+
+		unsigned cubeIndices[6*2] = 
+		{ 
+			0,1,2,2,3,0,
+			3,2,6,6,7,3,						
+		};
+		std::shared_ptr<IndexBuffer> cubeIB;
+		cubeIB.reset(IndexBuffer::Create(cubeIndices, sizeof(cubeIndices) / sizeof(uint32_t)));
+		m_CubeVA->SetIndexBuffer(cubeIB);
+
 		std::string vertexSrc = R"(
 			#version 330 core
 
 			layout(location=0) in vec3 a_Position;
 			layout(location=1) in vec4 a_Color;
 			
+			uniform mat4 VPMat;
+			
 			out vec3 v_Position;
 			out vec4 v_Color;
 			void main()
 			{
 				v_Color = a_Color;
-				v_Position = a_Position;
-				gl_Position = vec4(a_Position,1.0);
+				v_Position  = a_Position;
+				gl_Position =  VPMat* vec4(a_Position,1.0);
 			}
 		
 		)";
@@ -96,8 +132,7 @@ namespace Burnout
 			in vec4 v_Color;
 			void main()
 			{
-				color = vec4(v_Position * 0.5 + 0.5, 1.0);
-				color = v_Color;
+				color = vec4(v_Position, 1.0f);
 			}
 		
 		)";
@@ -108,13 +143,15 @@ namespace Burnout
 			#version 330 core
 
 			layout(location=0) in vec3 a_Position;
+
+			uniform mat4 VPMat;
 			
 			out vec3 v_Position;
 			out vec4 v_Color;
 			void main()
 			{
-				v_Position = a_Position;
-				gl_Position = vec4(a_Position,1.0);
+				v_Position =  a_Position;
+				gl_Position = VPMat * vec4(a_Position,1.0);
 			}
 		
 		)";
@@ -122,6 +159,8 @@ namespace Burnout
 			#version 330 core
 			
 			layout(location=0) out vec4 color;
+
+
 			in vec3 v_Position;
 			in vec4 v_Color;
 			void main()
@@ -142,13 +181,13 @@ namespace Burnout
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
-		layer->OnAttach();
+
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
-		layer->OnAttach();
+
 	}
 
 	void Application::OnEvent(Event& e)
@@ -173,10 +212,10 @@ namespace Burnout
 
 			Renderer::BeginScene();
 
-			m_BlueShader->Bind();
-			Renderer::Submit(m_SquareVA);
-			
 			m_Shader->Bind();
+			m_Shader->UploadMat4Uniform("VPMat", m_EditorCamera->GetViewProjMat());
+			Renderer::Submit(m_SquareVA);
+			m_Shader->UploadMat4Uniform("VPMat", m_EditorCamera->GetViewProjMat());
 			Renderer::Submit(m_VertexArray);
 
 			Renderer::EndScene();
