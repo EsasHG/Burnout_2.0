@@ -6,6 +6,7 @@
 namespace Burnout
 {
 	class KeyPressedEvent;
+	class MouseScrolledEvent;
 	class Camera : public Layer
 	{
 	public:
@@ -16,14 +17,20 @@ namespace Burnout
 		virtual void UpdateProjMatrix(float newAspectRatio);
 
 		virtual glm::mat4 GetViewProjMat();
+		virtual void OnEvent(Event& event) override;
+
+		bool OnMouseScrolled(MouseScrolledEvent& event);
 
 		glm::mat4 m_ProjMat;
 		glm::mat4 m_ViewMat;
 	protected:
 		glm::vec3 m_Forward;
+		glm::vec3 m_Up;
 		glm::vec3 m_Pos;
 		float m_NearPlane;
 		float m_FarPlane;
+		float m_Speed;
+
 
 	};
 }

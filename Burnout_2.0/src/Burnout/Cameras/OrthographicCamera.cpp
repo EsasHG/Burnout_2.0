@@ -11,8 +11,9 @@ namespace Burnout
 	{
 		m_ProjMat = glm::ortho(left, right, bottom, top, m_NearPlane, m_FarPlane);
 	}
+
 	glm::mat4 OrthographicCamera::GetViewProjMat()
 	{
-		return m_ProjMat;
+		return Camera::GetViewProjMat();
 	}
 }

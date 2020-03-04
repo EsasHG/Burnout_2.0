@@ -13,7 +13,7 @@ namespace Burnout
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		
 		glEnable(GL_DEPTH_TEST);
-		glEnable(GL_CULL_FACE);
+		glDisable(GL_CULL_FACE);
 		// Send the vertex shader source code to GL
 		// Note that std::string's .c_str is NULL character terminated.
 		const GLchar* source = vertexSrc.c_str();
@@ -134,7 +134,6 @@ namespace Burnout
 	void OpenGLShader::UploadMat4Uniform(std::string UniformName, glm::mat4& mat) const
 	{
 		GLint mMatrixUniform = glGetUniformLocation(m_RendererID, UniformName.c_str());
-		BO_CORE_TRACE("Mat {0}", mat[0][0]);
 		glUniformMatrix4fv(mMatrixUniform, 1, GL_FALSE, glm::value_ptr(mat));
 	}
 
