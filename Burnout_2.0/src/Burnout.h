@@ -12,5 +12,16 @@
 
 #include "Burnout/ImGui/ImGuiLayer.h"
 
+#include "Burnout/Renderer/Renderer.h"
+#include "Burnout/Renderer/RenderCommand.h"
+
+#include "Burnout/Renderer/Buffer.h"
+#include "Burnout/Renderer/Shader.h"
+#include "Burnout/Renderer/VertexArray.h"
+
+#include "Burnout/Cameras/PerspectiveCamera.h"
+
+
+
 //-----------Entry Point------------
 #include "Burnout/EntryPoint.h"

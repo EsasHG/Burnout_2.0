@@ -9,16 +9,11 @@
 
 #include "Burnout/ImGui/ImGuiLayer.h"
 
-#include "Burnout/Renderer/Shader.h"
-#include "Burnout/Renderer/Buffer.h"
-#include "Burnout/Renderer/VertexArray.h"
-
-
 namespace Burnout
 { 
 	class Camera;
 
-	class BURNOUT_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -41,20 +36,8 @@ namespace Burnout
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer = nullptr;
 		
-		Camera* m_EditorCamera;
-		
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		std::shared_ptr<VertexArray> m_CubeVA;
-
 
 	private:
 		static Application* s_Instance;

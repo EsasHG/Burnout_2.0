@@ -9,7 +9,7 @@ namespace Burnout
 	{
 	public:
 		PerspectiveCamera(float aspectRatio, float FOV = 45.f, float nearPlane = 0.1f, float farPlane = 1000.f);
-
+		virtual ~PerspectiveCamera() {}
 		virtual void UpdateProjMatrix(float newAspectRatio) override;
 		virtual void OnEvent(Event& event) override;
 		bool OnMouseMoved(MouseMovedEvent& event);

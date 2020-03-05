@@ -5,12 +5,12 @@
 
 namespace Burnout
 {
-	void Renderer::BeginScene()
+	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
+
+	void Renderer::BeginScene(Camera& camera)
 	{
-		glm::mat4 proj = glm::perspective(35.0f, 1.0f, 0.1f, 100.0f);
-		glm::mat4 view;
-		//BO_CORE_TRACE("proj mat: {0}", proj);
-		//BO_CORE_TRACE("view mat: {0}", view);
+		m_SceneData->ViewProjectionMatrix = camera.GetViewProjMat();
+
 	}
 
 	void Renderer::EndScene()
@@ -18,8 +18,10 @@ namespace Burnout
 
 	}
 
-	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray)
+	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray)
 	{
+		shader->Bind();
+		shader->UploadMat4Uniform("VPMat", m_SceneData->ViewProjectionMatrix);
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}

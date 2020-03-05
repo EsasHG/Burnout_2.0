@@ -133,6 +133,7 @@ namespace Burnout
 
 	void OpenGLShader::UploadMat4Uniform(std::string UniformName, glm::mat4& mat) const
 	{
+
 		GLint mMatrixUniform = glGetUniformLocation(m_RendererID, UniformName.c_str());
 		glUniformMatrix4fv(mMatrixUniform, 1, GL_FALSE, glm::value_ptr(mat));
 	}
