@@ -14,8 +14,8 @@ namespace Burnout
 
 		const glm::vec3& GetPosition() const { return m_Pos; }
 		void SetPosition(const glm::vec3& position) { m_Pos = position; }
-		virtual void OnUpdate();
-		void CheckMovement();
+		virtual void OnUpdate(Timestep ts);
+		void CheckMovement(Timestep ts);
 
 		virtual void UpdateProjMatrix(float newAspectRatio);
 

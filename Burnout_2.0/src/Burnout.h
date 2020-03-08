@@ -6,6 +6,8 @@
 #include "Burnout/Layer.h"
 #include "Burnout/Log.h"
 
+#include "Burnout/Core/Timestep.h"
+
 #include "Burnout/Input.h"
 #include "Burnout/KeyCodes.h"
 #include "Burnout/MouseButtonCodes.h"

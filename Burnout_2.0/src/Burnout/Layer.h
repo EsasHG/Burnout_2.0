@@ -3,6 +3,8 @@
 #include "Burnout/Core.h"
 #include "Burnout/Events/Event.h"
 
+#include "Burnout/Core/Timestep.h"
+
 namespace Burnout
 {
 	class BURNOUT_API Layer
@@ -13,7 +15,7 @@ namespace Burnout
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {};
 		virtual void OnEvent(Event& event) {}
 

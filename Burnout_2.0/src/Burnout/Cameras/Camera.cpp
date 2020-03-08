@@ -18,34 +18,35 @@ namespace Burnout
 
 		m_ProjMat = glm::mat4(1.f);
 		m_ViewMat = glm::mat4(1.f);
-		m_Speed = 0.01;
+		m_Speed = 5.0;
 	}
 
-	void Camera::OnUpdate()
+	void Camera::OnUpdate(Timestep ts)
 	{
 		//std::cout << pos.x << ", " << pos.y << ", " << pos.z << "\n";
 		m_ViewMat = glm::lookAt(m_Pos, m_Pos + m_Forward, glm::vec3(0.f, 1.f, 0.f));
 		//m_ViewMat = glm::lookAt(m_Pos, { 0,0,0 }, glm::vec3(0.f, 1.f, 0.f));
 		//return glm::lookAt(Position, Position + Front, Up);
 
-		CheckMovement();
+		CheckMovement(ts);
 	}
 
-	void Camera::CheckMovement()
+	void Camera::CheckMovement(Timestep ts)
 	{
+		float time = ts;
 		if (Input::IsKeyPressed(BO_KEY_W))
-			m_Pos += m_Forward * m_Speed;
+			m_Pos += m_Forward * m_Speed * time;
 		if (Input::IsKeyPressed(BO_KEY_A))
-			m_Pos -= glm::cross(m_Forward , m_Up) * m_Speed;
+			m_Pos -= glm::cross(m_Forward , m_Up) * m_Speed * time;
 		if (Input::IsKeyPressed(BO_KEY_S))
-			m_Pos -= m_Forward * m_Speed;
+			m_Pos -= m_Forward * m_Speed * time;
 		if (Input::IsKeyPressed(BO_KEY_D))
-			m_Pos += glm::cross(m_Forward, m_Up) * m_Speed;
+			m_Pos += glm::cross(m_Forward, m_Up) * m_Speed * time;
 
 		if (Input::IsKeyPressed(BO_KEY_E))
-			m_Pos += m_Up * m_Speed;
+			m_Pos += m_Up * m_Speed * time;
 		if (Input::IsKeyPressed(BO_KEY_Q))
-			m_Pos -= m_Up * m_Speed;
+			m_Pos -= m_Up * m_Speed * time ;
 	}
 
 	void Camera::UpdateProjMatrix(float newAspectRatio)
@@ -65,7 +66,6 @@ namespace Burnout
 	bool Camera::OnMouseScrolled(MouseScrolledEvent& event)
 	{
 		m_Speed += event.GetYOffset()* 0.01;
-		BO_CORE_TRACE("X: {0}, Y: {1}, Speed: {2}", event.GetXOffset(), event.GetYOffset(), m_Speed);
 		if (m_Speed < 0.f)
 			m_Speed = 0.0001f;
 		return false;

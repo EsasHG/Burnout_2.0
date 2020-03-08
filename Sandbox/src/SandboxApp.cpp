@@ -11,16 +11,16 @@ class ExampleLayer : public Burnout::Layer
 {
 public:
 	ExampleLayer()
-		:Layer(), m_EditorCamera(9.f/2.f)
+		:Layer(), m_EditorCamera(16.f / 9.f)
 	{
 
 
 		m_VertexArray.reset(Burnout::VertexArray::Create());
 
 		float vertices[3 * 7] = {
-			-0.5f, 0.5f , -0.5f, 1.0f, 0.f, 1.f, 1.f,
-			0.0f , -0.5f, -0.5f, 1.0f, 1.f, 0.f, 1.f,
-			0.5f , 0.5f , -0.5f, 0.0f, 0.f, 1.f, 1.f,
+			-0.5f,  0.5f, -0.5f, 1.0f, 0.f, 1.f, 1.f,
+			 0.0f, -0.5f, -0.5f, 1.0f, 1.f, 0.f, 1.f,
+			 0.5f,  0.5f, -0.5f, 0.0f, 0.f, 1.f, 1.f,
 		};
 
 		std::shared_ptr<Burnout::VertexBuffer> vertexBuffer;
@@ -42,10 +42,10 @@ public:
 
 
 		float squareVertices[3 * 4] = {
-			-0.75f, -0.75f, 0.0f,
-			 0.75f, -0.75f, 0.0f,
-			 0.75f,	 0.75f, 0.0f,
-			-0.75f,	 0.75f, 0.0f
+			-1.f, - 1.f, 0.0f,
+			 1.f, - 1.f, 0.0f,
+			 1.f,	1.f, 0.0f,
+			-1.f,	1.f, 0.0f
 		};
 
 		std::shared_ptr<Burnout::VertexBuffer> squareVB;
@@ -101,6 +101,7 @@ public:
 			layout(location=1) in vec4 a_Color;
 			
 			uniform mat4 VPMat;
+			uniform mat4 u_ModelMatrix;
 			
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -108,7 +109,7 @@ public:
 			{
 				v_Color = a_Color;
 				v_Position  = a_Position;
-				gl_Position =  VPMat* vec4(a_Position,1.0);
+				gl_Position =  VPMat * u_ModelMatrix * vec4(a_Position,1.0);
 			}
 		
 		)";
@@ -133,13 +134,14 @@ public:
 			layout(location=0) in vec3 a_Position;
 
 			uniform mat4 VPMat;
+			uniform mat4 u_ModelMatrix;
 			
 			out vec3 v_Position;
 			out vec4 v_Color;
 			void main()
 			{
 				v_Position =  a_Position;
-				gl_Position = VPMat * vec4(a_Position,1.0);
+				gl_Position = VPMat* u_ModelMatrix * vec4(a_Position,1.0);
 			}
 		
 		)";
@@ -161,16 +163,29 @@ public:
 		m_BlueShader.reset(Burnout::Shader::Create(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Burnout::Timestep ts) override
 	{
-		
+		//BO_TRACE("DeltaTime: {0}s, {1}ms", ts.GetSeconds(), ts.GetMilliseconds());
+
 		Burnout::RenderCommand::SetClearColor({ 0.11f, 0.11f, 0.11f, 1 });
 		Burnout::RenderCommand::Clear();
 		Burnout::Renderer::BeginScene(m_EditorCamera);
-		Burnout::Renderer::Submit(m_Shader, m_SquareVA);
+
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+		for (int y = 0; y < 20; y++)
+		{
+			for (int x = 0; x < 20; x++)
+			{
+				glm::vec3 pos(x * 0.21f, y* 0.21f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				Burnout::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+
+			}
+		}
 		Burnout::Renderer::Submit(m_Shader, m_VertexArray);
+		
 		Burnout::Renderer::EndScene();
-		m_EditorCamera.OnUpdate();
+		m_EditorCamera.OnUpdate(ts);
 
 	}
 	virtual void OnImGuiRender() override

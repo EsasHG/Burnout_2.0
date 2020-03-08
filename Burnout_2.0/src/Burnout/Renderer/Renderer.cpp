@@ -18,10 +18,11 @@ namespace Burnout
 
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray)
+	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
 		shader->UploadMat4Uniform("VPMat", m_SceneData->ViewProjectionMatrix);
+		shader->UploadMat4Uniform("u_ModelMatrix", transform);
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}

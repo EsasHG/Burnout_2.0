@@ -116,6 +116,7 @@
     <ClInclude Include="src\Burnout\Cameras\Camera.h" />
     <ClInclude Include="src\Burnout\Cameras\PerspectiveCamera.h" />
     <ClInclude Include="src\Burnout\Cameras\OrthographicCamera.h" />
+    <ClInclude Include="src\Burnout\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
