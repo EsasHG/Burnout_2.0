@@ -1,9 +1,12 @@
 #include <Burnout.h>
 
-#include <glm/vec3.hpp> // glm::vec3
-#include <glm/vec4.hpp> // glm::vec4
-#include <glm/mat4x4.hpp> // glm::mat4
-#include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
+#include "Platform/OpenGL/OpenGLShader.h"
+
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp> 
+#include <glm/mat4x4.hpp> 
+#include <glm/gtc/matrix_transform.hpp> 
+#include <glm/gtc/type_ptr.hpp>
 
 #include "imgui/imgui.h"
 
@@ -128,7 +131,7 @@ public:
 
 		m_Shader.reset(Burnout::Shader::Create(vertexSrc, fragmentSrc));
 
-		std::string blueShaderVertexSrc = R"(
+		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
 
 			layout(location=0) in vec3 a_Position;
@@ -137,7 +140,6 @@ public:
 			uniform mat4 u_ModelMatrix;
 			
 			out vec3 v_Position;
-			out vec4 v_Color;
 			void main()
 			{
 				v_Position =  a_Position;
@@ -145,22 +147,20 @@ public:
 			}
 		
 		)";
-		std::string blueShaderFragmentSrc = R"(
+		std::string flatColorShaderFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location=0) out vec4 color;
+			uniform vec3 u_Color;
 
-
-			in vec3 v_Position;
-			in vec4 v_Color;
-			void main()
-			{
-				color = vec4(0.2,0.3,0.8,1.0);
+			void main() 
+			{ 
+				color = vec4(u_Color, 1.0);
 			}
 		
 		)";
 
-		m_BlueShader.reset(Burnout::Shader::Create(blueShaderVertexSrc, blueShaderFragmentSrc));
+		m_FlatColorShader.reset(Burnout::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 	}
 
 	void OnUpdate(Burnout::Timestep ts) override
@@ -169,17 +169,21 @@ public:
 
 		Burnout::RenderCommand::SetClearColor({ 0.11f, 0.11f, 0.11f, 1 });
 		Burnout::RenderCommand::Clear();
+
 		Burnout::Renderer::BeginScene(m_EditorCamera);
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+		m_FlatColorShader->Bind();
+		std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
 		for (int y = 0; y < 20; y++)
 		{
 			for (int x = 0; x < 20; x++)
 			{
 				glm::vec3 pos(x * 0.21f, y* 0.21f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Burnout::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
-
+				Burnout::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
 		Burnout::Renderer::Submit(m_Shader, m_VertexArray);
@@ -190,7 +194,10 @@ public:
 	}
 	virtual void OnImGuiRender() override
 	{
+		ImGui::Begin("Settings");
 
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(Burnout::Event& event) override
@@ -203,10 +210,12 @@ private:
 	std::shared_ptr<Burnout::Shader> m_Shader;
 	std::shared_ptr<Burnout::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Burnout::Shader> m_BlueShader;
+	std::shared_ptr<Burnout::Shader> m_FlatColorShader;
 	std::shared_ptr<Burnout::VertexArray> m_SquareVA;
 
 	std::shared_ptr<Burnout::VertexArray> m_CubeVA;
+
+	glm::vec3 m_SquareColor = { 0.2,0.3,0.8 };
 
 };
 

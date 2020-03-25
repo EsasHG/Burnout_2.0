@@ -103,7 +103,7 @@ namespace Burnout
 	class VertexBuffer
 	{
 	public:
-		virtual ~VertexBuffer() {}
+		virtual ~VertexBuffer() = default;
 	
 
 		virtual void Bind() const = 0;

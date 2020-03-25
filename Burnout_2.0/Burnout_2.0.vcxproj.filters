@@ -4,6 +4,12 @@
     <Filter Include="Burnout">
       <UniqueIdentifier>{94FB7BF5-00DB-FA90-09F3-8567755161F2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Burnout\Cameras">
+      <UniqueIdentifier>{7F73FE0A-EBFE-6BCF-F40F-EFC3601AC8CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Burnout\Core">
+      <UniqueIdentifier>{6C7CE575-58DF-741A-0165-ADD0EDA6409D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Burnout\Events">
       <UniqueIdentifier>{F858588A-E426-4C90-CDBA-BCB6B92728F5}</UniqueIdentifier>
     </Filter>
@@ -28,8 +34,20 @@
     <ClInclude Include="src\Burnout\Application.h">
       <Filter>Burnout</Filter>
     </ClInclude>
+    <ClInclude Include="src\Burnout\Cameras\Camera.h">
+      <Filter>Burnout\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Cameras\OrthographicCamera.h">
+      <Filter>Burnout\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Cameras\PerspectiveCamera.h">
+      <Filter>Burnout\Cameras</Filter>
+    </ClInclude>
     <ClInclude Include="src\Burnout\Core.h">
       <Filter>Burnout</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\Timestep.h">
+      <Filter>Burnout\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\EntryPoint.h">
       <Filter>Burnout</Filter>
@@ -113,14 +131,19 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\bopch.h" />
-    <ClInclude Include="src\Burnout\Cameras\Camera.h" />
-    <ClInclude Include="src\Burnout\Cameras\PerspectiveCamera.h" />
-    <ClInclude Include="src\Burnout\Cameras\OrthographicCamera.h" />
-    <ClInclude Include="src\Burnout\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
       <Filter>Burnout</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Cameras\Camera.cpp">
+      <Filter>Burnout\Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Cameras\OrthographicCamera.cpp">
+      <Filter>Burnout\Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Cameras\PerspectiveCamera.cpp">
+      <Filter>Burnout\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\ImGui\ImGuiBuild.cpp">
       <Filter>Burnout\ImGui</Filter>
@@ -177,8 +200,5 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\bopch.cpp" />
-    <ClCompile Include="src\Burnout\Cameras\Camera.cpp" />
-    <ClCompile Include="src\Burnout\Cameras\PerspectiveCamera.cpp" />
-    <ClCompile Include="src\Burnout\Cameras\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>
