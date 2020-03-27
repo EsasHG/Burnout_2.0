@@ -1,204 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Burnout">
-      <UniqueIdentifier>{94FB7BF5-00DB-FA90-09F3-8567755161F2}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Burnout\Cameras">
-      <UniqueIdentifier>{7F73FE0A-EBFE-6BCF-F40F-EFC3601AC8CF}</UniqueIdentifier>
+    <Filter Include="src\Burnout">
+      <UniqueIdentifier>{ABFBB5FE-17B1-2EF4-A0A5-28CB0C5A25F8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Burnout\Core">
-      <UniqueIdentifier>{6C7CE575-58DF-741A-0165-ADD0EDA6409D}</UniqueIdentifier>
+    <Filter Include="src\Burnout\Cameras">
+      <UniqueIdentifier>{969A6625-02FC-4333-8B69-8AE5F7C97AF2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Burnout\Events">
-      <UniqueIdentifier>{F858588A-E426-4C90-CDBA-BCB6B92728F5}</UniqueIdentifier>
+    <Filter Include="src\Burnout\Core">
+      <UniqueIdentifier>{E3220689-CF1B-25DB-F84D-0A60E4A504E7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Burnout\ImGui">
-      <UniqueIdentifier>{BECFFF32-2A90-7B69-F3CA-C4E65F4AC045}</UniqueIdentifier>
+    <Filter Include="src\Burnout\Events">
+      <UniqueIdentifier>{2F793CE8-1B5D-FD3D-84BD-F79070C0E7BF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Burnout\Renderer">
-      <UniqueIdentifier>{BA85CD78-A67E-ECCA-CFB0-D14FBB08CCD6}</UniqueIdentifier>
+    <Filter Include="src\Burnout\ImGui">
+      <UniqueIdentifier>{154535AA-815B-3340-CAD2-BE61362804C8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    <Filter Include="src\Burnout\Renderer">
+      <UniqueIdentifier>{B18F3AE0-9D1E-C4A9-463D-D8A432ABD44F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\OpenGL">
-      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\Windows">
-      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Burnout.h" />
+    <ClInclude Include="src\Burnout.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\Burnout\Application.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Cameras\Camera.h">
-      <Filter>Burnout\Cameras</Filter>
+      <Filter>src\Burnout\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Cameras\OrthographicCamera.h">
-      <Filter>Burnout\Cameras</Filter>
+      <Filter>src\Burnout\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Cameras\PerspectiveCamera.h">
-      <Filter>Burnout\Cameras</Filter>
+      <Filter>src\Burnout\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Core.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Core\Timestep.h">
-      <Filter>Burnout\Core</Filter>
+      <Filter>src\Burnout\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\EntryPoint.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Events\ApplicationEvent.h">
-      <Filter>Burnout\Events</Filter>
+      <Filter>src\Burnout\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Events\Event.h">
-      <Filter>Burnout\Events</Filter>
+      <Filter>src\Burnout\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Events\KeyEvent.h">
-      <Filter>Burnout\Events</Filter>
+      <Filter>src\Burnout\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Events\MouseEvent.h">
-      <Filter>Burnout\Events</Filter>
+      <Filter>src\Burnout\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\ImGui\ImGuiLayer.h">
-      <Filter>Burnout\ImGui</Filter>
+      <Filter>src\Burnout\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Input.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\KeyCodes.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Layer.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\LayerStack.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Log.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\MouseButtonCodes.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\Buffer.h">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\GraphicsContext.h">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\RenderCommand.h">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\Renderer.h">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\RendererAPI.h">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\Shader.h">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Renderer\Texture.h">
+      <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\VertexArray.h">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Window.h">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\bopch.h" />
+    <ClInclude Include="src\bopch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Application.cpp">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Cameras\Camera.cpp">
-      <Filter>Burnout\Cameras</Filter>
+      <Filter>src\Burnout\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Cameras\OrthographicCamera.cpp">
-      <Filter>Burnout\Cameras</Filter>
+      <Filter>src\Burnout\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Cameras\PerspectiveCamera.cpp">
-      <Filter>Burnout\Cameras</Filter>
+      <Filter>src\Burnout\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\ImGui\ImGuiBuild.cpp">
-      <Filter>Burnout\ImGui</Filter>
+      <Filter>src\Burnout\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\ImGui\ImGuiLayer.cpp">
-      <Filter>Burnout\ImGui</Filter>
+      <Filter>src\Burnout\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Layer.cpp">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\LayerStack.cpp">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Log.cpp">
-      <Filter>Burnout</Filter>
+      <Filter>src\Burnout</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\Buffer.cpp">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\RenderCommand.cpp">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\Renderer.cpp">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\RendererAPI.cpp">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\Shader.cpp">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Renderer\Texture.cpp">
+      <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\VertexArray.cpp">
-      <Filter>Burnout\Renderer</Filter>
+      <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\bopch.cpp" />
+    <ClCompile Include="src\bopch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

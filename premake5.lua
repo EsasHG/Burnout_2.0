@@ -17,6 +17,7 @@ workspace "Burnout_2.0"
 	IncludeDirs["Glad"] = "Burnout_2.0/vendor/Glad/include"
 	IncludeDirs["ImGui"] = "Burnout_2.0/vendor/imgui"
 	IncludeDirs["glm"] = "Burnout_2.0/vendor/glm"
+	IncludeDirs["stb_image"] = "Burnout_2.0/vendor/stb_image"
 	
 	group "Dependencies"
 		include "Burnout_2.0/vendor/GLFW"
@@ -43,7 +44,9 @@ project "Burnout_2.0"
 	files 
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp"
 	}
 
 	includedirs
@@ -53,7 +56,8 @@ project "Burnout_2.0"
 		"%{IncludeDirs.GLFW}",
 		"%{IncludeDirs.Glad}",
 		"%{IncludeDirs.ImGui}",
-		"%{IncludeDirs.glm}"
+		"%{IncludeDirs.glm}",
+		"%{IncludeDirs.stb_image}"
 
 	}
 

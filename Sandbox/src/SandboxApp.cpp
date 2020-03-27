@@ -44,18 +44,20 @@ public:
 		m_SquareVA.reset(Burnout::VertexArray::Create());
 
 
-		float squareVertices[3 * 4] = {
-			-1.f, - 1.f, 0.0f,
-			 1.f, - 1.f, 0.0f,
-			 1.f,	1.f, 0.0f,
-			-1.f,	1.f, 0.0f
+		float squareVertices[5 * 4] = {
+			-1.f, - 1.f, 0.0f, 0.f, 0.f,
+			 1.f, - 1.f, 0.0f, 1.f, 0.f,
+			 1.f,	1.f, 0.0f, 1.f, 1.f,
+			-1.f,	1.f, 0.0f, 0.f, 1.f
 		};
+
 
 		Burnout::Ref<Burnout::VertexBuffer> squareVB;
 		squareVB.reset(Burnout::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
 		squareVB->SetLayout({
-			{Burnout::ShaderDataType::Float3, "a_Position"}
+			{Burnout::ShaderDataType::Float3, "a_Position"},
+			{Burnout::ShaderDataType::Float2, "a_TexCoord"}
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -139,10 +141,9 @@ public:
 			uniform mat4 VPMat;
 			uniform mat4 u_ModelMatrix;
 			
-			out vec3 v_Position;
 			void main()
 			{
-				v_Position =  a_Position;
+
 				gl_Position = VPMat* u_ModelMatrix * vec4(a_Position,1.0);
 			}
 		
@@ -161,6 +162,48 @@ public:
 		)";
 
 		m_FlatColorShader.reset(Burnout::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+
+			layout(location=0) in vec3 a_Position;
+			layout(location=1) in vec2 a_TexCoord;
+
+			uniform mat4 VPMat;
+			uniform mat4 u_ModelMatrix;
+			
+			out vec2 v_TexCoord;
+			void main()
+			{
+				v_TexCoord =  a_TexCoord;
+
+				gl_Position = VPMat* u_ModelMatrix * vec4(a_Position,1.0);
+			}
+		
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location=0) out vec4 color;
+
+			in vec2 v_TexCoord;
+			uniform sampler2D u_Texture;
+
+			void main() 
+			{ 
+				color = texture(u_Texture,v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(Burnout::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Burnout::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+
 	}
 
 	void OnUpdate(Burnout::Timestep ts) override
@@ -186,7 +229,12 @@ public:
 				Burnout::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
-		Burnout::Renderer::Submit(m_Shader, m_VertexArray);
+
+		m_Texture->Bind(0);
+		Burnout::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		//Triangle
+		//Burnout::Renderer::Submit(m_Shader, m_VertexArray);
 		
 		Burnout::Renderer::EndScene();
 		m_EditorCamera.OnUpdate(ts);
@@ -209,8 +257,11 @@ private:
 
 	Burnout::Ref<Burnout::Shader> m_Shader;
 	Burnout::Ref<Burnout::VertexArray> m_VertexArray;
-	Burnout::Ref<Burnout::Shader> m_FlatColorShader;
+	Burnout::Ref<Burnout::Shader> m_FlatColorShader, m_TextureShader;
 	Burnout::Ref<Burnout::VertexArray> m_SquareVA;
+
+	Burnout::Ref<Burnout::Texture2D> m_Texture;
+
 	Burnout::Ref<Burnout::VertexArray> m_CubeVA;
 
 	glm::vec3 m_SquareColor = { 0.2,0.3,0.8 };

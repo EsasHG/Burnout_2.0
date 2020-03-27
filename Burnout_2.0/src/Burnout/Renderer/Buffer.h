@@ -95,6 +95,7 @@ namespace Burnout
 				offset += element.Size;
 				m_Stride += element.Size;
 			}
+			BO_CORE_TRACE("BufferLayout Offset: {0}, Stride: {1}", offset, m_Stride);
 		}
 		std::vector<BufferElement> m_Elements;
 		uint32_t m_Stride = 0;

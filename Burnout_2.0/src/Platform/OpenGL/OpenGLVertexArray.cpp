@@ -68,6 +68,7 @@ namespace Burnout
 			);
 			index++;
 		}
+		BO_CORE_TRACE("Index: {0}", index);
 		m_VertexBuffers.push_back(vertexBuffer);
 	}
 
