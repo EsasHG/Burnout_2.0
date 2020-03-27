@@ -26,7 +26,7 @@ public:
 			 0.5f,  0.5f, -0.5f, 0.0f, 0.f, 1.f, 1.f,
 		};
 
-		std::shared_ptr<Burnout::VertexBuffer> vertexBuffer;
+		Burnout::Ref<Burnout::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Burnout::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Burnout::BufferLayout layout = {
 			{Burnout::ShaderDataType::Float3, "a_Position"},
@@ -36,7 +36,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned indices[3] = { 0,1,2 };
-		std::shared_ptr<Burnout::IndexBuffer> indexBuffer;
+		Burnout::Ref<Burnout::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Burnout::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -51,7 +51,7 @@ public:
 			-1.f,	1.f, 0.0f
 		};
 
-		std::shared_ptr<Burnout::VertexBuffer> squareVB;
+		Burnout::Ref<Burnout::VertexBuffer> squareVB;
 		squareVB.reset(Burnout::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
 		squareVB->SetLayout({
@@ -61,7 +61,7 @@ public:
 
 		unsigned squareIndices[6] = { 0,1,2,2,3,0 };
 
-		std::shared_ptr<Burnout::IndexBuffer> squareIB;
+		Burnout::Ref<Burnout::IndexBuffer> squareIB;
 		squareIB.reset(Burnout::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -80,7 +80,7 @@ public:
 			-0.5f,	0.5f, -0.5f
 		};
 
-		std::shared_ptr<Burnout::VertexBuffer> cubeVB;
+		Burnout::Ref<Burnout::VertexBuffer> cubeVB;
 		cubeVB.reset(Burnout::VertexBuffer::Create(cubeVertices, sizeof(squareVertices)));
 
 		cubeVB->SetLayout({
@@ -93,7 +93,7 @@ public:
 			0,1,2,2,3,0,
 			3,2,6,6,7,3,
 		};
-		std::shared_ptr<Burnout::IndexBuffer> cubeIB;
+		Burnout::Ref<Burnout::IndexBuffer> cubeIB;
 		cubeIB.reset(Burnout::IndexBuffer::Create(cubeIndices, sizeof(cubeIndices) / sizeof(uint32_t)));
 		m_CubeVA->SetIndexBuffer(cubeIB);
 
@@ -207,13 +207,11 @@ public:
 	Burnout::PerspectiveCamera m_EditorCamera;
 private:
 
-	std::shared_ptr<Burnout::Shader> m_Shader;
-	std::shared_ptr<Burnout::VertexArray> m_VertexArray;
-
-	std::shared_ptr<Burnout::Shader> m_FlatColorShader;
-	std::shared_ptr<Burnout::VertexArray> m_SquareVA;
-
-	std::shared_ptr<Burnout::VertexArray> m_CubeVA;
+	Burnout::Ref<Burnout::Shader> m_Shader;
+	Burnout::Ref<Burnout::VertexArray> m_VertexArray;
+	Burnout::Ref<Burnout::Shader> m_FlatColorShader;
+	Burnout::Ref<Burnout::VertexArray> m_SquareVA;
+	Burnout::Ref<Burnout::VertexArray> m_CubeVA;
 
 	glm::vec3 m_SquareColor = { 0.2,0.3,0.8 };
 

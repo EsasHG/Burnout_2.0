@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef BO_PLATFORM_WINDOWS
 	#if BO_DYNAMIC_LINK
 		#ifdef BO_BUILD_DLL
@@ -34,3 +36,13 @@
 
 
 #define BIT(x) (1 << x)
+
+
+namespace Burnout
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+	
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}
