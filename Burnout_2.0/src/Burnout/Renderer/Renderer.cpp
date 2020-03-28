@@ -14,9 +14,9 @@ namespace Burnout
 		RenderCommand::Init();
 	}
 
-	void Renderer::BeginScene(Camera& camera)
+	void Renderer::BeginScene(Ref<Camera> camera)
 	{
-		m_SceneData->ViewProjectionMatrix = camera.GetViewProjMat();
+		m_SceneData->ViewProjectionMatrix = camera->GetViewProjMat();
 
 	}
 

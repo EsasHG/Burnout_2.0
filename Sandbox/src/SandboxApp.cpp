@@ -13,10 +13,11 @@
 class ExampleLayer : public Burnout::Layer
 {
 public:
-	ExampleLayer()
-		:Layer(), m_EditorCamera(16.f / 9.f)
+	ExampleLayer() : Layer()
 	{
-
+		m_PerspectiveCamera = std::make_shared<Burnout::PerspectiveCamera>(16.f / 9.f);
+		m_OrthoCamera = std::make_shared<Burnout::OrthographicCamera>(-1.6f, 1.6f, -0.9f, 0.9f);
+		m_ActiveCamera = m_OrthoCamera;
 
 		m_VertexArray.reset(Burnout::VertexArray::Create());
 
@@ -131,7 +132,7 @@ public:
 		
 		)";
 
-		m_Shader.reset(Burnout::Shader::Create(vertexSrc, fragmentSrc));
+		m_VertexPosColorShader = Burnout::Shader::Create("vertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -161,15 +162,15 @@ public:
 		
 		)";
 
-		m_FlatColorShader.reset(Burnout::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Burnout::Shader::Create("flatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
 
-		m_TextureShader.reset(Burnout::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 		m_Texture = Burnout::Texture2D::Create("assets/textures/me.png");
 		m_LogoTexture = Burnout::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Burnout::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Burnout::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 
 	}
 
@@ -180,7 +181,7 @@ public:
 		Burnout::RenderCommand::SetClearColor({ 0.11f, 0.11f, 0.11f, 1 });
 		Burnout::RenderCommand::Clear();
 
-		Burnout::Renderer::BeginScene(m_EditorCamera);
+		Burnout::Renderer::BeginScene(m_ActiveCamera);
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -196,19 +197,21 @@ public:
 				Burnout::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 
 		m_Texture->Bind(0);
-		Burnout::Renderer::Submit(m_TextureShader, m_SquareVA, 
+		Burnout::Renderer::Submit(textureShader, m_SquareVA,
 			glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.1f)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_LogoTexture->Bind();
-		Burnout::Renderer::Submit(m_TextureShader, m_SquareVA, 
+		Burnout::Renderer::Submit(textureShader, m_SquareVA,
 			glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,0.0f,0.1f))* glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		//Triangle
 		//Burnout::Renderer::Submit(m_Shader, m_VertexArray);
 		
 		Burnout::Renderer::EndScene();
-		m_EditorCamera.OnUpdate(ts);
+		m_ActiveCamera->OnUpdate(ts);
 
 	}
 	virtual void OnImGuiRender() override
@@ -221,14 +224,36 @@ public:
 
 	void OnEvent(Burnout::Event& event) override
 	{
-		m_EditorCamera.OnEvent(event);
+		m_ActiveCamera->OnEvent(event);
+		Burnout::EventDispatcher d(event);
+		d.Dispatch<Burnout::KeyPressedEvent>(BO_BIND_EVENT_FN(ExampleLayer::OnKeyPressed));
 	}
-	Burnout::PerspectiveCamera m_EditorCamera;
-private:
 
-	Burnout::Ref<Burnout::Shader> m_Shader;
+	bool OnKeyPressed(Burnout::KeyPressedEvent& event)
+	{
+		if (event.GetKeyCode() == BO_KEY_SPACE)
+		{
+			if (m_ActiveCamera == m_PerspectiveCamera)
+				m_ActiveCamera = m_OrthoCamera;
+			else
+				m_ActiveCamera = m_PerspectiveCamera;
+		}
+		BO_TRACE("Camera pos: {0}, {1}, {2}", m_ActiveCamera->GetPosition().x, m_ActiveCamera->GetPosition().y, m_ActiveCamera->GetPosition().z);
+		return false;
+	}
+
+
+private:
+	// ********** Cameras **********
+	Burnout::Ref<Burnout::Camera> m_ActiveCamera;
+	Burnout::Ref<Burnout::PerspectiveCamera> m_PerspectiveCamera;
+	Burnout::Ref<Burnout::OrthographicCamera> m_OrthoCamera;
+
+	// ********** Rendering **********
+	Burnout::ShaderLibrary m_ShaderLibrary;
+	Burnout::Ref<Burnout::Shader> m_VertexPosColorShader;
 	Burnout::Ref<Burnout::VertexArray> m_VertexArray;
-	Burnout::Ref<Burnout::Shader> m_FlatColorShader, m_TextureShader;
+	Burnout::Ref<Burnout::Shader> m_FlatColorShader;
 	Burnout::Ref<Burnout::VertexArray> m_SquareVA;
 
 	Burnout::Ref<Burnout::Texture2D> m_Texture, m_LogoTexture;

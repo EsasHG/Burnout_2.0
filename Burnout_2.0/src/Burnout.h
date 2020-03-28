@@ -23,6 +23,7 @@
 #include "Burnout/Renderer/VertexArray.h"
 
 #include "Burnout/Cameras/PerspectiveCamera.h"
+#include "Burnout/Cameras/OrthographicCamera.h"
 
 
 
