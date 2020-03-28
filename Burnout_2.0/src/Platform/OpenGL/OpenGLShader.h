@@ -8,9 +8,13 @@
 namespace Burnout 
 {
 
+	//TODO: REMOVE!
+	typedef unsigned int GLenum;
+
 	class OpenGLShader : public Shader
 	{
 	public:
+		OpenGLShader(const std::string& filepath);
 		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
 		virtual ~OpenGLShader();
 
@@ -26,7 +30,10 @@ namespace Burnout
 		void UploadUniformMat3(const std::string& UniformName, const glm::mat3& mat) const;
 		void UploadUniformMat4(const std::string& UniformName, const glm::mat4& mat) const;
 
-
+	private:
+		std::string ReadFile(const std::string& filepath);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
 
 	private:
 		uint32_t m_RendererID;
