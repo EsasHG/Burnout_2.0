@@ -5,39 +5,21 @@
 
 namespace Burnout
 {
-	class KeyPressedEvent;
-	class MouseScrolledEvent;
-	class Camera //: public Layer
+	class Camera
 	{
 	public:
-		Camera(float nearPlane = -0.1f, float farPlane = 1000.f);
+		Camera() {}
 		virtual ~Camera() = default;
-
-		virtual void OnUpdate(Timestep ts) = 0;
-		virtual void UpdatePosition(Timestep ts) = 0;
-
-		virtual void UpdateProjMatrix(float newAspectRatio) {};
-
-		glm::mat4 GetViewProjMat();
-
-		// ********** Events **********
-		virtual void OnEvent(Event& event);
-
-		bool OnMouseScrolled(MouseScrolledEvent& event);
-
-		const glm::vec3& GetPosition() const { return m_Pos; }
-		void SetPosition(const glm::vec3& position) { m_Pos = position; }
+		
+		glm::mat4 GetViewProjMat() const { return  m_ProjMat * m_ViewMat; } 
 
 	protected:
-		glm::mat4 m_ProjMat;
-		glm::mat4 m_ViewMat;
-		glm::vec3 m_Pos;
+		friend class CameraController;
 
-		float m_NearPlane;
-		float m_FarPlane;
-		float m_Speed;
-
+		glm::mat4 m_ProjMat = glm::mat4(1.f);
+		glm::mat4 m_ViewMat = glm::mat4(1.f);
 
 	};
+
 }
 

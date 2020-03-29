@@ -13,6 +13,12 @@ namespace Burnout
 	{
 		RenderCommand::Init();
 	}
+	
+	void Renderer::BeginScene(Camera& camera)
+	{
+		m_SceneData->ViewProjectionMatrix = camera.GetViewProjMat();
+
+	}
 
 	void Renderer::BeginScene(Ref<Camera> camera)
 	{

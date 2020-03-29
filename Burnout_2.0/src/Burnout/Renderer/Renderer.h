@@ -11,6 +11,7 @@ namespace Burnout
 
 		static void Init();
 
+		static void BeginScene(Camera& camera);
 		static void BeginScene(Ref<Camera> camera);
 		static void EndScene();
 

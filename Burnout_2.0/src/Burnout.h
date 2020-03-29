@@ -22,8 +22,9 @@
 #include "Burnout/Renderer/Texture.h"
 #include "Burnout/Renderer/VertexArray.h"
 
-#include "Burnout/Cameras/PerspectiveCamera.h"
-#include "Burnout/Cameras/OrthographicCamera.h"
+#include "Burnout/Cameras/FirstPersonCameraController.h"
+#include "Burnout/Cameras/OrthographicCameraController.h"
+#include "Burnout/Cameras/CameraController.h"
 
 
 

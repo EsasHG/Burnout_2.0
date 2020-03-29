@@ -15,9 +15,9 @@ class ExampleLayer : public Burnout::Layer
 public:
 	ExampleLayer() : Layer()
 	{
-		m_PerspectiveCamera = std::make_shared<Burnout::PerspectiveCamera>(16.f / 9.f);
-		m_OrthoCamera = std::make_shared<Burnout::OrthographicCamera>(-1.6f, 1.6f, -0.9f, 0.9f);
-		m_ActiveCamera = m_OrthoCamera;
+		m_PerspectiveCamera = std::make_shared<Burnout::FirstPersonCameraController>(1280.f / 720.f);
+		m_OrthoCamera = std::make_shared<Burnout::OrthographicCameraController>(1280.f/720.f, true);
+		m_ActiveCamera = m_PerspectiveCamera;
 
 		m_VertexArray.reset(Burnout::VertexArray::Create());
 
@@ -176,12 +176,13 @@ public:
 
 	void OnUpdate(Burnout::Timestep ts) override
 	{
+		m_ActiveCamera->OnUpdate(ts);
 		//BO_TRACE("DeltaTime: {0}s, {1}ms", ts.GetSeconds(), ts.GetMilliseconds());
 
 		Burnout::RenderCommand::SetClearColor({ 0.11f, 0.11f, 0.11f, 1 });
 		Burnout::RenderCommand::Clear();
 
-		Burnout::Renderer::BeginScene(m_ActiveCamera);
+		Burnout::Renderer::BeginScene(m_ActiveCamera->GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -211,7 +212,6 @@ public:
 		//Burnout::Renderer::Submit(m_Shader, m_VertexArray);
 		
 		Burnout::Renderer::EndScene();
-		m_ActiveCamera->OnUpdate(ts);
 
 	}
 	virtual void OnImGuiRender() override
@@ -238,16 +238,15 @@ public:
 			else
 				m_ActiveCamera = m_PerspectiveCamera;
 		}
-		BO_TRACE("Camera pos: {0}, {1}, {2}", m_ActiveCamera->GetPosition().x, m_ActiveCamera->GetPosition().y, m_ActiveCamera->GetPosition().z);
 		return false;
 	}
 
 
 private:
 	// ********** Cameras **********
-	Burnout::Ref<Burnout::Camera> m_ActiveCamera;
-	Burnout::Ref<Burnout::PerspectiveCamera> m_PerspectiveCamera;
-	Burnout::Ref<Burnout::OrthographicCamera> m_OrthoCamera;
+	Burnout::Ref<Burnout::CameraController> m_ActiveCamera;
+	Burnout::Ref<Burnout::FirstPersonCameraController> m_PerspectiveCamera;
+	Burnout::Ref<Burnout::OrthographicCameraController> m_OrthoCamera;
 
 	// ********** Rendering **********
 	Burnout::ShaderLibrary m_ShaderLibrary;

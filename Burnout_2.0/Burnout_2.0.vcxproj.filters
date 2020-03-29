@@ -48,10 +48,13 @@
     <ClInclude Include="src\Burnout\Cameras\Camera.h">
       <Filter>src\Burnout\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\Cameras\OrthographicCamera.h">
+    <ClInclude Include="src\Burnout\Cameras\CameraController.h">
       <Filter>src\Burnout\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\Cameras\PerspectiveCamera.h">
+    <ClInclude Include="src\Burnout\Cameras\FirstPersonCameraController.h">
+      <Filter>src\Burnout\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Cameras\OrthographicCameraController.h">
       <Filter>src\Burnout\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Core.h">
@@ -158,13 +161,10 @@
     <ClCompile Include="src\Burnout\Application.cpp">
       <Filter>src\Burnout</Filter>
     </ClCompile>
-    <ClCompile Include="src\Burnout\Cameras\Camera.cpp">
+    <ClCompile Include="src\Burnout\Cameras\FirstPersonCameraController.cpp">
       <Filter>src\Burnout\Cameras</Filter>
     </ClCompile>
-    <ClCompile Include="src\Burnout\Cameras\OrthographicCamera.cpp">
-      <Filter>src\Burnout\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Burnout\Cameras\PerspectiveCamera.cpp">
+    <ClCompile Include="src\Burnout\Cameras\OrthographicCameraController.cpp">
       <Filter>src\Burnout\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\ImGui\ImGuiBuild.cpp">

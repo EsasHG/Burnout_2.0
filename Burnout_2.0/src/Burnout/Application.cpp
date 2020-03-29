@@ -7,8 +7,8 @@
 
 #include "Input.h"
 
-#include "Cameras/PerspectiveCamera.h"
-#include "Cameras/OrthographicCamera.h"
+#include "Cameras/FirstPersonCameraController.h"
+#include "Cameras/OrthographicCameraController.h"
 
 #include <GLFW/glfw3.h>
 
