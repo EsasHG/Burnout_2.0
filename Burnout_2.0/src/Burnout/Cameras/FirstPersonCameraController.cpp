@@ -107,8 +107,11 @@ namespace Burnout
 
 	bool FirstPersonCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
-		m_AspectRatio = (float)e.GetWidth()/(float)e.GetHeight();
-		SetCameraProjMat(glm::perspective(glm::radians(m_FOV), m_AspectRatio, 0.1f, 1000.f));
+		if (e.GetHeight() != 0)
+		{
+			m_AspectRatio = (float)e.GetWidth()/(float)e.GetHeight();
+			SetCameraProjMat(glm::perspective(glm::radians(m_FOV), m_AspectRatio, 0.1f, 1000.f));
+		}
 
 		return false;
 	}

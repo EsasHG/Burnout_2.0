@@ -10,6 +10,8 @@ namespace Burnout
 	public:
 
 		static void Init();
+		
+		static void OnWindowResized(uint32_t width, uint32_t height);
 
 		static void BeginScene(Camera& camera);
 		static void BeginScene(Ref<Camera> camera);

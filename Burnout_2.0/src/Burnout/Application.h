@@ -39,6 +39,7 @@ namespace Burnout
 		ImGuiLayer* m_ImGuiLayer = nullptr;
 		
 		bool m_Running = true;
+		bool m_Minimized = false;
 		LayerStack m_LayerStack;
 		float m_LastFrameTime = 0.f;
 	private:
