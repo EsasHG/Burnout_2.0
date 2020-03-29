@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Burnout/Log.h"
+#include "Burnout/Core/Log.h"
 
 #ifdef BO_PLATFORM_WINDOWS
 	#include <Windows.h>

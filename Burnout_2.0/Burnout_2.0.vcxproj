@@ -141,25 +141,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Burnout.h" />
-    <ClInclude Include="src\Burnout\Application.h" />
     <ClInclude Include="src\Burnout\Cameras\Camera.h" />
     <ClInclude Include="src\Burnout\Cameras\CameraController.h" />
     <ClInclude Include="src\Burnout\Cameras\FirstPersonCameraController.h" />
     <ClInclude Include="src\Burnout\Cameras\OrthographicCameraController.h" />
-    <ClInclude Include="src\Burnout\Core.h" />
+    <ClInclude Include="src\Burnout\Core\Application.h" />
+    <ClInclude Include="src\Burnout\Core\Core.h" />
+    <ClInclude Include="src\Burnout\Core\EntryPoint.h" />
+    <ClInclude Include="src\Burnout\Core\Input.h" />
+    <ClInclude Include="src\Burnout\Core\KeyCodes.h" />
+    <ClInclude Include="src\Burnout\Core\Layer.h" />
+    <ClInclude Include="src\Burnout\Core\LayerStack.h" />
+    <ClInclude Include="src\Burnout\Core\Log.h" />
+    <ClInclude Include="src\Burnout\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Burnout\Core\Timestep.h" />
-    <ClInclude Include="src\Burnout\EntryPoint.h" />
+    <ClInclude Include="src\Burnout\Core\Window.h" />
     <ClInclude Include="src\Burnout\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Burnout\Events\Event.h" />
     <ClInclude Include="src\Burnout\Events\KeyEvent.h" />
     <ClInclude Include="src\Burnout\Events\MouseEvent.h" />
     <ClInclude Include="src\Burnout\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Burnout\Input.h" />
-    <ClInclude Include="src\Burnout\KeyCodes.h" />
-    <ClInclude Include="src\Burnout\Layer.h" />
-    <ClInclude Include="src\Burnout\LayerStack.h" />
-    <ClInclude Include="src\Burnout\Log.h" />
-    <ClInclude Include="src\Burnout\MouseButtonCodes.h" />
     <ClInclude Include="src\Burnout\Renderer\Buffer.h" />
     <ClInclude Include="src\Burnout\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Burnout\Renderer\RenderCommand.h" />
@@ -168,7 +169,6 @@
     <ClInclude Include="src\Burnout\Renderer\Shader.h" />
     <ClInclude Include="src\Burnout\Renderer\Texture.h" />
     <ClInclude Include="src\Burnout\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Burnout\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -181,14 +181,14 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Burnout\Application.cpp" />
     <ClCompile Include="src\Burnout\Cameras\FirstPersonCameraController.cpp" />
     <ClCompile Include="src\Burnout\Cameras\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Burnout\Core\Application.cpp" />
+    <ClCompile Include="src\Burnout\Core\Layer.cpp" />
+    <ClCompile Include="src\Burnout\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Burnout\Core\Log.cpp" />
     <ClCompile Include="src\Burnout\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Burnout\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Burnout\Layer.cpp" />
-    <ClCompile Include="src\Burnout\LayerStack.cpp" />
-    <ClCompile Include="src\Burnout\Log.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Burnout\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Renderer.cpp" />

@@ -1,7 +1,7 @@
 #include "bopch.h"
 #include "OrthographicCameraController.h"
-#include "Burnout/Input.h"
-#include "Burnout/KeyCodes.h"
+#include "Burnout/Core/Input.h"
+#include "Burnout/Core/KeyCodes.h"
 
 #include <glm/ext/matrix_clip_space.hpp>
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Burnout/Input.h"
+#include "Burnout/Core/Input.h"
 namespace Burnout
 {
 

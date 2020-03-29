@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Burnout/Core.h"
+#include "Burnout/Core/Core.h"
 #include "Burnout/Events/Event.h"
 
 #include "Burnout/Core/Timestep.h"

@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Burnout/Core.h"
+#include "Burnout/Core/Core.h"
 namespace Burnout
 {
 	class Texture

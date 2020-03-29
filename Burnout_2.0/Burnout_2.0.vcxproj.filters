@@ -42,9 +42,6 @@
     <ClInclude Include="src\Burnout.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\Application.h">
-      <Filter>src\Burnout</Filter>
-    </ClInclude>
     <ClInclude Include="src\Burnout\Cameras\Camera.h">
       <Filter>src\Burnout\Cameras</Filter>
     </ClInclude>
@@ -57,14 +54,38 @@
     <ClInclude Include="src\Burnout\Cameras\OrthographicCameraController.h">
       <Filter>src\Burnout\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\Core.h">
-      <Filter>src\Burnout</Filter>
+    <ClInclude Include="src\Burnout\Core\Application.h">
+      <Filter>src\Burnout\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\Core.h">
+      <Filter>src\Burnout\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\EntryPoint.h">
+      <Filter>src\Burnout\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\Input.h">
+      <Filter>src\Burnout\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\KeyCodes.h">
+      <Filter>src\Burnout\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\Layer.h">
+      <Filter>src\Burnout\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\LayerStack.h">
+      <Filter>src\Burnout\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\Log.h">
+      <Filter>src\Burnout\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Core\MouseButtonCodes.h">
+      <Filter>src\Burnout\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Core\Timestep.h">
       <Filter>src\Burnout\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\EntryPoint.h">
-      <Filter>src\Burnout</Filter>
+    <ClInclude Include="src\Burnout\Core\Window.h">
+      <Filter>src\Burnout\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Events\ApplicationEvent.h">
       <Filter>src\Burnout\Events</Filter>
@@ -80,24 +101,6 @@
     </ClInclude>
     <ClInclude Include="src\Burnout\ImGui\ImGuiLayer.h">
       <Filter>src\Burnout\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\Input.h">
-      <Filter>src\Burnout</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\KeyCodes.h">
-      <Filter>src\Burnout</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\Layer.h">
-      <Filter>src\Burnout</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\LayerStack.h">
-      <Filter>src\Burnout</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\Log.h">
-      <Filter>src\Burnout</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\MouseButtonCodes.h">
-      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\Buffer.h">
       <Filter>src\Burnout\Renderer</Filter>
@@ -122,9 +125,6 @@
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\VertexArray.h">
       <Filter>src\Burnout\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Burnout\Window.h">
-      <Filter>src\Burnout</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -158,29 +158,29 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Burnout\Application.cpp">
-      <Filter>src\Burnout</Filter>
-    </ClCompile>
     <ClCompile Include="src\Burnout\Cameras\FirstPersonCameraController.cpp">
       <Filter>src\Burnout\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Cameras\OrthographicCameraController.cpp">
       <Filter>src\Burnout\Cameras</Filter>
     </ClCompile>
+    <ClCompile Include="src\Burnout\Core\Application.cpp">
+      <Filter>src\Burnout\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Core\Layer.cpp">
+      <Filter>src\Burnout\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Core\LayerStack.cpp">
+      <Filter>src\Burnout\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Core\Log.cpp">
+      <Filter>src\Burnout\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Burnout\ImGui\ImGuiBuild.cpp">
       <Filter>src\Burnout\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\ImGui\ImGuiLayer.cpp">
       <Filter>src\Burnout\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Burnout\Layer.cpp">
-      <Filter>src\Burnout</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Burnout\LayerStack.cpp">
-      <Filter>src\Burnout</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Burnout\Log.cpp">
-      <Filter>src\Burnout</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\Buffer.cpp">
       <Filter>src\Burnout\Renderer</Filter>

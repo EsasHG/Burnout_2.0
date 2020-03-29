@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Burnout/Layer.h"
+#include "Burnout/Core/Layer.h"
 #include "Burnout/Events/MouseEvent.h"
 #include "Burnout/Events/KeyEvent.h"
 #include "Burnout/Events/ApplicationEvent.h"

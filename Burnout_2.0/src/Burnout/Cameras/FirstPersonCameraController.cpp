@@ -3,9 +3,9 @@
 
 #include "Burnout/Events/MouseEvent.h"
 #include "Burnout/Events/ApplicationEvent.h"
-#include "Burnout/Input.h"
-#include "Burnout/KeyCodes.h"
-#include "Burnout/MouseButtonCodes.h"
+#include "Burnout/Core/Input.h"
+#include "Burnout/Core/KeyCodes.h"
+#include "Burnout/Core/MouseButtonCodes.h"
 
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>

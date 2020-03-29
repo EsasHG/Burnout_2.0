@@ -1,14 +1,14 @@
 #include "bopch.h"
 #include "Application.h"
 
-#include "Burnout/Log.h"
+#include "Burnout/Core/Log.h"
 
 #include "Burnout/Renderer/Renderer.h"
 
 #include "Input.h"
 
-#include "Cameras/FirstPersonCameraController.h"
-#include "Cameras/OrthographicCameraController.h"
+#include "Burnout/Cameras/FirstPersonCameraController.h"
+#include "Burnout/Cameras/OrthographicCameraController.h"
 
 #include <GLFW/glfw3.h>
 

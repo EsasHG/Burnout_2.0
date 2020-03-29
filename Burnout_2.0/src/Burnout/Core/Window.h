@@ -2,7 +2,7 @@
 
 #include "bopch.h"
 
-#include "Burnout/Core.h"
+#include "Burnout/Core/Core.h"
 #include "Burnout/Events/Event.h"
 
 namespace Burnout

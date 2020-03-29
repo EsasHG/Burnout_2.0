@@ -2,15 +2,15 @@
 
 //For use by Burnout Application
 
-#include "Burnout/Application.h"
-#include "Burnout/Layer.h"
-#include "Burnout/Log.h"
+#include "Burnout/Core/Application.h"
+#include "Burnout/Core/Layer.h"
+#include "Burnout/Core/Log.h"
 
 #include "Burnout/Core/Timestep.h"
 
-#include "Burnout/Input.h"
-#include "Burnout/KeyCodes.h"
-#include "Burnout/MouseButtonCodes.h"
+#include "Burnout/Core/Input.h"
+#include "Burnout/Core/KeyCodes.h"
+#include "Burnout/Core/MouseButtonCodes.h"
 
 #include "Burnout/ImGui/ImGuiLayer.h"
 
@@ -29,4 +29,4 @@
 
 
 //-----------Entry Point------------
-#include "Burnout/EntryPoint.h"
+#include "Burnout/Core/EntryPoint.h"

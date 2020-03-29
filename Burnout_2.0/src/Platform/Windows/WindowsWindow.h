@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Burnout/Window.h"
+#include "Burnout/Core/Window.h"
 #include "Burnout/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
