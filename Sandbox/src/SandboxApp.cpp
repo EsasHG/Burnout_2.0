@@ -1,4 +1,5 @@
 #include <Burnout.h>
+#include <Burnout/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -10,6 +11,8 @@
 
 #include "imgui/imgui.h"
 
+#include "Sandbox2D.h"
+
 class ExampleLayer : public Burnout::Layer
 {
 public:
@@ -19,7 +22,7 @@ public:
 		m_OrthoCamera = std::make_shared<Burnout::OrthographicCameraController>(1280.f/720.f, true);
 		m_ActiveCamera = m_PerspectiveCamera;
 
-		m_VertexArray.reset(Burnout::VertexArray::Create());
+		m_VertexArray = Burnout::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f,  0.5f, -0.5f, 1.0f, 0.f, 1.f, 1.f,
@@ -42,7 +45,7 @@ public:
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 
-		m_SquareVA.reset(Burnout::VertexArray::Create());
+		m_SquareVA = Burnout::VertexArray::Create();
 
 
 		float squareVertices[5 * 4] = {
@@ -69,7 +72,7 @@ public:
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 
-		m_CubeVA.reset(Burnout::VertexArray::Create());
+		m_CubeVA = Burnout::VertexArray::Create();
 		float cubeVertices[3 * 8]
 		{
 			-0.5f, -0.5f, 0.0f,
@@ -177,7 +180,6 @@ public:
 	void OnUpdate(Burnout::Timestep ts) override
 	{
 		m_ActiveCamera->OnUpdate(ts);
-		//BO_TRACE("DeltaTime: {0}s, {1}ms", ts.GetSeconds(), ts.GetMilliseconds());
 
 		Burnout::RenderCommand::SetClearColor({ 0.11f, 0.11f, 0.11f, 1 });
 		Burnout::RenderCommand::Clear();
@@ -268,9 +270,8 @@ class Sandbox : public Burnout::Application
 public: 
 	Sandbox()
 	{
-		ExampleLayer* l = new ExampleLayer();
-		PushLayer(l);
-		//Burnout::Application::PushLayer(&l->m_EditorCamera);
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 
 	}
 	~Sandbox()

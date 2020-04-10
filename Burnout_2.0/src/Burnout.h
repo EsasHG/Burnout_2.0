@@ -26,7 +26,3 @@
 #include "Burnout/Cameras/OrthographicCameraController.h"
 #include "Burnout/Cameras/CameraController.h"
 
-
-
-//-----------Entry Point------------
-#include "Burnout/Core/EntryPoint.h"
