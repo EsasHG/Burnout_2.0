@@ -49,7 +49,7 @@ namespace Burnout
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
-		m_ZoomLevel -= e.GetYOffset() * 0.1;
+		m_ZoomLevel -= e.GetYOffset() * 0.1f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 
 		m_TranslationSpeed = m_ZoomLevel * 2.f;

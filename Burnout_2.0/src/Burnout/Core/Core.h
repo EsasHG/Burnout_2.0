@@ -57,7 +57,7 @@
 		#define BURNOUT_API
 	#endif
 #else	
-	#error Hazel only supports Windows!
+	#error Bornout only supports Windows!
 #endif // End of DLL support
 
 
