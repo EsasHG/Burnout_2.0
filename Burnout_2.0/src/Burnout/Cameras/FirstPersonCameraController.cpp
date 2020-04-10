@@ -78,7 +78,7 @@ namespace Burnout
 		m_LastX = e.GetX();
 		m_LastY = e.GetY();;
 
-		float sensitivity = 0.05;
+		float sensitivity = 0.05f;
 		xoffset *= sensitivity;
 		yoffset *= sensitivity;
 

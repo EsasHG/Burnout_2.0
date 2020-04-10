@@ -73,7 +73,7 @@ namespace Burnout
 		std::unordered_map<GLenum, std::string> shaderSources;
 		const char* typeToken = "#type";
 		size_t typeTokenLength = strlen(typeToken);
-		size_t pos = source.find(typeToken, 0);
+		size_t pos = source.find(typeToken, 0);	
 		while (pos != std::string::npos)
 		{
 			size_t eol = source.find_first_of("\r\n", pos);
@@ -83,6 +83,7 @@ namespace Burnout
 			BO_CORE_ASSERT(ShaderTypeFromString(type), "Invalid Shader Type specified");
 
 			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
+			BO_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
 			pos = source.find(typeToken, nextLinePos);
 			shaderSources[ShaderTypeFromString(type)] = source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? source.size() - 1 : nextLinePos));
 		}
@@ -149,6 +150,7 @@ namespace Burnout
 		for (auto id : glShaderIDs)
 		{
 			glDetachShader(program, id);
+			glDeleteShader(id);
 		}
 	}
 

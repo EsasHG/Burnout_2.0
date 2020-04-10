@@ -1,12 +1,16 @@
 [submodule "Burnout_2.0/vendor/spdlog"]
 	path = Burnout_2.0/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+	branch = v1.x
 [submodule "Burnout_2.0/vendor/GLFW"]
 	path = Burnout_2.0/vendor/GLFW
 	url = https://github.com/EsasHG/glfw
+	branch = master
 [submodule "Burnout_2.0/vendor/imgui"]
 	path = Burnout_2.0/vendor/imgui
 	url = https://github.com/EsasHG/imgui
+	branch = docking
 [submodule "Burnout_2.0/vendor/glm"]
 	path = Burnout_2.0/vendor/glm
 	url = https://github.com/g-truc/glm
+	branch = master

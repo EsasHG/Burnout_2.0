@@ -10,6 +10,11 @@ workspace "Burnout_2.0"
 		"Dist"
 	}
 
+	flags
+	{
+		"MultiProcessorCompile"
+	}
+
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 	IncludeDirs = {}
@@ -74,24 +79,23 @@ project "Burnout_2.0"
 
 		defines
 		{
-			"BO_PLATFORM_WINDOWS",
 			"BO_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
 
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG"
+		defines "BO_DEBUG"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
-		defines "HZ_RELEASE"
+		defines "BO_RELEASE"
 		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
-		defines "HZ_DIST"
+		defines "BO_DIST"
 		runtime "Release"
 		optimize "on"
 
@@ -128,22 +132,17 @@ project "Sandbox"
 	filter "system:windows"
 		systemversion "latest"
 
-		defines
-		{
-			"BO_PLATFORM_WINDOWS",
-		}
-
 	filter "configurations:Debug"
-		defines "HZ_DEBUG"
+		defines "BO_DEBUG"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
-		defines "HZ_RELEASE"
+		defines "BO_RELEASE"
 		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
-		defines "HZ_DIST"
+		defines "BO_DIST"
 		runtime "Release"
 		optimize "on"
