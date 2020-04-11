@@ -1,6 +1,6 @@
 #include "bopch.h"
 #include "Renderer.h"
-
+#include "Renderer2D.h"
 #include <glm/ext/matrix_clip_space.hpp>
 
 #include "Platform/OpenGL/OpenGLShader.h"
@@ -12,6 +12,7 @@ namespace Burnout
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 	void Renderer::OnWindowResized(uint32_t width, uint32_t height)
@@ -39,7 +40,7 @@ namespace Burnout
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("VPMat", m_SceneData->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ModelMatrix", transform);
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);

@@ -169,6 +169,7 @@
     <ClInclude Include="src\Burnout\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Burnout\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Burnout\Renderer\Renderer.h" />
+    <ClInclude Include="src\Burnout\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Burnout\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Burnout\Renderer\Shader.h" />
     <ClInclude Include="src\Burnout\Renderer\Texture.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="src\Burnout\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Burnout\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Burnout\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Shader.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Texture.cpp" />

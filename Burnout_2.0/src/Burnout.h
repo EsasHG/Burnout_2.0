@@ -15,6 +15,7 @@
 #include "Burnout/ImGui/ImGuiLayer.h"
 
 #include "Burnout/Renderer/Renderer.h"
+#include "Burnout/Renderer/Renderer2D.h"
 #include "Burnout/Renderer/RenderCommand.h"
 
 #include "Burnout/Renderer/Buffer.h"

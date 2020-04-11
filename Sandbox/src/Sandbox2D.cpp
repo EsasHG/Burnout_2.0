@@ -13,32 +13,6 @@ Sandbox2D::Sandbox2D()
 void Sandbox2D::OnAttach()
 {
 
-	m_VertexArray = Burnout::VertexArray::Create();
-
-
-	float squareVertices[5 * 4] = {
-		-1.f, -1.f, 0.0f, 
-		 1.f, -1.f, 0.0f, 
-		 1.f,	1.f, 0.0f,
-		-1.f,	1.f, 0.0f,
-	};
-
-
-	Burnout::Ref<Burnout::VertexBuffer> squareVB;
-	squareVB.reset(Burnout::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-
-	squareVB->SetLayout({
-		{Burnout::ShaderDataType::Float3, "a_Position"},
-		});
-	m_VertexArray->AddVertexBuffer(squareVB);
-
-	unsigned squareIndices[6] = { 0,1,2,2,3,0 };
-
-	Burnout::Ref<Burnout::IndexBuffer> squareIB;
-	squareIB.reset(Burnout::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-	m_VertexArray->SetIndexBuffer(squareIB);
-
-	m_FlatColorShader = Burnout::Shader::Create("assets/shaders/FlatColor.glsl");
 
 }
 
@@ -54,16 +28,17 @@ void Sandbox2D::OnUpdate(Burnout::Timestep ts)
 	Burnout::RenderCommand::SetClearColor({ 0.11f, 0.11f, 0.11f, 1 });
 	Burnout::RenderCommand::Clear();
 
-	Burnout::Renderer::BeginScene(m_OrthoCamera.GetCamera());
+	Burnout::Renderer2D::BeginScene(m_OrthoCamera.GetCamera());
 
 	glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 	
-	std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_FlatColorShader)->Bind();
-	std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
+	Burnout::Renderer2D::DrawQuad(glm::vec2(0.f,0.f ), glm::vec2(1.f,1.f ), glm::vec4(0.8f, 0.2f,0.3f,1.0f));
 
-	Burnout::Renderer::Submit(m_FlatColorShader, m_VertexArray);
-
-	Burnout::Renderer::EndScene();
+	Burnout::Renderer2D::EndScene();
+	
+	//TODO add these functions:
+	//std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_FlatColorShader)->Bind();
+	//std::dynamic_pointer_cast<Burnout::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
 }
 
 void Sandbox2D::OnImGuiRender()
