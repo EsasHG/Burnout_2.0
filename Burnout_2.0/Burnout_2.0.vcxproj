@@ -160,6 +160,7 @@
     <ClInclude Include="src\Burnout\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Burnout\Core\Timestep.h" />
     <ClInclude Include="src\Burnout\Core\Window.h" />
+    <ClInclude Include="src\Burnout\Debug\Instrumentor.h" />
     <ClInclude Include="src\Burnout\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Burnout\Events\Event.h" />
     <ClInclude Include="src\Burnout\Events\KeyEvent.h" />

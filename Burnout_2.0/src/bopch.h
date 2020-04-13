@@ -14,6 +14,7 @@
 #include <unordered_set>
 
 #include "Burnout/Core/Log.h"
+#include "Burnout/Debug/Instrumentor.h"
 
 #ifdef BO_PLATFORM_WINDOWS
 	#include <Windows.h>
