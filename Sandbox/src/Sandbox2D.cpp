@@ -13,21 +13,23 @@ Sandbox2D::Sandbox2D()
 }
 void Sandbox2D::OnAttach()
 {
+	BO_PROFILE_FUNCTION();
+
 	m_Texture = Burnout::Texture2D::Create("assets/textures/me.png");
 }
 
 void Sandbox2D::OnDetach()
 {
+	BO_PROFILE_FUNCTION();
+
 }
 
 void Sandbox2D::OnUpdate(Burnout::Timestep ts)
 {
 	BO_PROFILE_FUNCTION();
 
-	{
-		BO_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_OrthoCamera.OnUpdate(ts);
-	}
+	m_OrthoCamera.OnUpdate(ts);
+	
 
 	{
 		BO_PROFILE_SCOPE("Renderer Prep");

@@ -20,10 +20,11 @@ namespace Burnout
 	static Renderer2DStorage* s_Data;
 	void Renderer2D::Init()
 	{
+		BO_PROFILE_FUNCTION();
+
 		s_Data = new Renderer2DStorage();
 
 		s_Data->QuadVertexArray = VertexArray::Create();
-
 
 		float squareVertices[5 * 4] = {
 			-1.f, -1.f, 0.0f, 0.0f, 0.0f,
@@ -33,8 +34,7 @@ namespace Burnout
 		};
 
 
-		Ref<VertexBuffer> squareVB;
-		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Ref<VertexBuffer> squareVB = VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 
 		squareVB->SetLayout({
 			{ShaderDataType::Float3, "a_Position"},
@@ -58,16 +58,21 @@ namespace Burnout
 	}
 	void Renderer2D::Shutdown()
 	{
+		BO_PROFILE_FUNCTION();
+
 		delete s_Data;
 	}
 
 	void Renderer2D::BeginScene(const Camera& camera)
 	{
+		BO_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjMat());
 	}
 	void Renderer2D::EndScene()
 	{
+		BO_PROFILE_FUNCTION();
 
 	}
 
@@ -78,6 +83,8 @@ namespace Burnout
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, glm::vec2& size, const glm::vec4& color)
 	{
+		BO_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->SetFloat4("u_Color", color);
 		s_Data->WhiteTexture->Bind();
 
@@ -93,12 +100,11 @@ namespace Burnout
 	void Renderer2D::DrawQuad(const glm::vec2& position, glm::vec2& size, const Ref<Texture2D>& texture)
 	{
 		DrawQuad({ position.x,position.y, 0.f }, size, texture);
-
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, glm::vec2& size, const Ref<Texture2D>& texture)
 	{
-
+		BO_PROFILE_FUNCTION();
 
 		texture->Bind();
 		s_Data->TextureShader->SetFloat4("u_Color", glm::vec4(1.f));

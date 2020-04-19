@@ -13,11 +13,15 @@ namespace Burnout
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool allowRotation)
 		: CameraController(aspectRatio), m_AllowRotation(allowRotation), m_Rotation(0.f)
 	{
+		BO_PROFILE_FUNCTION();
+
 		SetCameraProjMat(glm::ortho(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel));
 	}
 
 	void OrthographicCameraController::OnUpdate(Timestep& ts)
 	{
+		BO_PROFILE_FUNCTION();
+
 		float time = ts;
 		if (Input::IsKeyPressed(BO_KEY_W))
 			m_Pos += glm::vec3(0.f, 1.f, 0.f) * m_TranslationSpeed * time;
@@ -42,6 +46,8 @@ namespace Burnout
 
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
+		BO_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(BO_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(BO_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
@@ -49,6 +55,8 @@ namespace Burnout
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset() * 0.1f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 
@@ -61,6 +69,8 @@ namespace Burnout
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		SetCameraProjMat(glm::ortho(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel, -1.0f, 1.0f));
 

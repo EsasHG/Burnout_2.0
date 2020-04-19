@@ -11,6 +11,8 @@ namespace Burnout
 
 	void Renderer::Init()
 	{
+		BO_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

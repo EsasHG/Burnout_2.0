@@ -28,8 +28,7 @@ public:
 			 0.5f,  0.5f, -0.5f, 0.0f, 0.f, 1.f, 1.f,
 		};
 
-		Burnout::Ref<Burnout::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Burnout::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Burnout::Ref<Burnout::VertexBuffer> vertexBuffer = Burnout::VertexBuffer::Create(vertices, sizeof(vertices));
 		Burnout::BufferLayout layout = {
 			{Burnout::ShaderDataType::Float3, "a_Position"},
 			{Burnout::ShaderDataType::Float4, "a_Color"}
@@ -54,8 +53,7 @@ public:
 		};
 
 
-		Burnout::Ref<Burnout::VertexBuffer> squareVB;
-		squareVB.reset(Burnout::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Burnout::Ref<Burnout::VertexBuffer> squareVB = Burnout::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 
 		squareVB->SetLayout({
 			{Burnout::ShaderDataType::Float3, "a_Position"},
@@ -84,8 +82,7 @@ public:
 			-0.5f,	0.5f, -0.5f
 		};
 
-		Burnout::Ref<Burnout::VertexBuffer> cubeVB;
-		cubeVB.reset(Burnout::VertexBuffer::Create(cubeVertices, sizeof(squareVertices)));
+		Burnout::Ref<Burnout::VertexBuffer> cubeVB = Burnout::VertexBuffer::Create(cubeVertices, sizeof(squareVertices));
 
 		cubeVB->SetLayout({
 			{Burnout::ShaderDataType::Float3, "a_Position"}

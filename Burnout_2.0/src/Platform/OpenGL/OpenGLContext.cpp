@@ -14,6 +14,8 @@ namespace Burnout
 
 	void OpenGLContext::Init()
 	{
+		BO_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)(glfwGetProcAddress));
 		BO_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -35,6 +37,8 @@ namespace Burnout
 	
 	void OpenGLContext::SwapBuffers()
 	{
+		BO_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 
 	}

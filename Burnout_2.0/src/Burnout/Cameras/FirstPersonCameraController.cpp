@@ -16,6 +16,8 @@ namespace Burnout
 	FirstPersonCameraController::FirstPersonCameraController(float aspectRatio, float FOV, float nearPlane, float farPlane)
 		: CameraController(aspectRatio), m_FOV(FOV), m_LastX(0.f), m_LastY(0.f), m_Yaw(-90.f), m_Pitch(0.f)
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_Forward = glm::vec3(0.f, 0.f, -1.f);
 		m_Right = glm::vec3(1.f, 0.f, 0.f);
 		m_Pos = glm::vec3(0.0f, 0.f, 3.f);
@@ -28,6 +30,8 @@ namespace Burnout
 
 	void FirstPersonCameraController::OnUpdate(Timestep& ts)
 	{
+		BO_PROFILE_FUNCTION();
+
 		float time = ts;
 	
 		if (Input::IsKeyPressed(BO_KEY_W))
@@ -51,6 +55,8 @@ namespace Burnout
 
 	void FirstPersonCameraController::OnEvent(Event& e)
 	{
+		BO_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseMovedEvent>(BO_BIND_EVENT_FN(FirstPersonCameraController::OnMouseMoved));
 		dispatcher.Dispatch<MouseScrolledEvent>(BO_BIND_EVENT_FN(FirstPersonCameraController::OnMouseScrolled));
@@ -59,6 +65,8 @@ namespace Burnout
 
 	bool FirstPersonCameraController::OnMouseMoved(MouseMovedEvent& e)
 	{
+		BO_PROFILE_FUNCTION();
+
 
 		if (!Input::IsMouseButtonPressed(BO_MOUSE_BUTTON_RIGHT))
 		{
@@ -100,6 +108,8 @@ namespace Burnout
 
 	bool FirstPersonCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_TranslationSpeed -= e.GetYOffset();
 		m_TranslationSpeed = std::max(m_TranslationSpeed, 0.001f);
 		return false;
@@ -107,6 +117,8 @@ namespace Burnout
 
 	bool FirstPersonCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		BO_PROFILE_FUNCTION();
+
 		if (e.GetHeight() != 0)
 		{
 			m_AspectRatio = (float)e.GetWidth()/(float)e.GetHeight();
