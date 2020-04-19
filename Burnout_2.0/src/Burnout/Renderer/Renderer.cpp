@@ -17,36 +17,46 @@ namespace Burnout
 
 	void Renderer::OnWindowResized(uint32_t width, uint32_t height)
 	{
+		BO_PROFILE_FUNCTION();
+
 		RenderCommand::SetViewport(0, 0, width, height);
 	}
 	
 	void Renderer::BeginScene(Camera& camera)
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_SceneData->ViewProjectionMatrix = camera.GetViewProjMat();
 
 	}
 
 	void Renderer::BeginScene(Ref<Camera> camera)
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_SceneData->ViewProjectionMatrix = camera->GetViewProjMat();
 
 	}
 
 	void Renderer::EndScene()
 	{
+		BO_PROFILE_FUNCTION();
 
 	}
 
+	//Really need to do something about this entire function
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
+		BO_PROFILE_FUNCTION();
+
 		shader->Bind();
 		shader->SetMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
 		shader->SetMat4("u_ModelMatrix", transform);
+
 		shader->SetFloat4("u_Color", glm::vec4(1.f, 1.f, 1.f, 1.f));
 		shader->SetFloat("u_TilingFactor",1.f);
 
 
-		
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}

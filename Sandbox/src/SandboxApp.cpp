@@ -16,6 +16,8 @@ class ExampleLayer : public Burnout::Layer
 public:
 	ExampleLayer() : Layer()
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_PerspectiveCamera = std::make_shared<Burnout::FirstPersonCameraController>(1280.f / 720.f);
 		m_OrthoCamera = std::make_shared<Burnout::OrthographicCameraController>(1280.f/720.f, true);
 		m_ActiveCamera = m_OrthoCamera;
@@ -174,6 +176,8 @@ public:
 
 	void OnUpdate(Burnout::Timestep ts) override
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_ActiveCamera->OnUpdate(ts);
 
 		Burnout::RenderCommand::SetClearColor({ 0.11f, 0.11f, 0.11f, 1 });
@@ -213,6 +217,8 @@ public:
 	}
 	virtual void OnImGuiRender() override
 	{
+		BO_PROFILE_FUNCTION();
+
 		ImGui::Begin("Settings");
 
 		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
@@ -221,6 +227,8 @@ public:
 
 	void OnEvent(Burnout::Event& event) override
 	{
+		BO_PROFILE_FUNCTION();
+
 		m_ActiveCamera->OnEvent(event);
 		Burnout::EventDispatcher d(event);
 		d.Dispatch<Burnout::KeyPressedEvent>(BO_BIND_EVENT_FN(ExampleLayer::OnKeyPressed));
@@ -228,6 +236,8 @@ public:
 
 	bool OnKeyPressed(Burnout::KeyPressedEvent& event)
 	{
+		BO_PROFILE_FUNCTION();
+
 		if (event.GetKeyCode() == BO_KEY_SPACE)
 		{
 			if (m_ActiveCamera == m_PerspectiveCamera)
