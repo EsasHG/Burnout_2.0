@@ -18,7 +18,7 @@ public:
 	{
 		m_PerspectiveCamera = std::make_shared<Burnout::FirstPersonCameraController>(1280.f / 720.f);
 		m_OrthoCamera = std::make_shared<Burnout::OrthographicCameraController>(1280.f/720.f, true);
-		m_ActiveCamera = m_PerspectiveCamera;
+		m_ActiveCamera = m_OrthoCamera;
 
 		m_VertexArray = Burnout::VertexArray::Create();
 
@@ -104,7 +104,7 @@ public:
 			layout(location=0) in vec3 a_Position;
 			layout(location=1) in vec4 a_Color;
 			
-			uniform mat4 VPMat;
+			uniform mat4 u_ViewProjection;
 			uniform mat4 u_ModelMatrix;
 			
 			out vec3 v_Position;
@@ -113,7 +113,7 @@ public:
 			{
 				v_Color = a_Color;
 				v_Position  = a_Position;
-				gl_Position =  VPMat * u_ModelMatrix * vec4(a_Position,1.0);
+				gl_Position =  u_ViewProjection * u_ModelMatrix * vec4(a_Position,1.0);
 			}
 		
 		)";
@@ -137,13 +137,13 @@ public:
 
 			layout(location=0) in vec3 a_Position;
 
-			uniform mat4 VPMat;
+			uniform mat4 u_ViewProjection;
 			uniform mat4 u_ModelMatrix;
 			
 			void main()
 			{
 
-				gl_Position = VPMat* u_ModelMatrix * vec4(a_Position,1.0);
+				gl_Position = u_ViewProjection* u_ModelMatrix * vec4(a_Position,1.0);
 			}
 		
 		)";
@@ -186,19 +186,19 @@ public:
 		m_FlatColorShader->Bind();
 		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
-		for (int y = 0; y < 20; y++)
+		for (int y = 0; y < 10; y++)
 		{
-			for (int x = 0; x < 20; x++)
+			for (int x = 0; x < 10; x++)
 			{
 				glm::vec3 pos(x * 0.21f, y* 0.21f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
 				Burnout::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
+
 		auto textureShader = m_ShaderLibrary.Get("Texture");
-
-
 		m_Texture->Bind(0);
+
 		Burnout::Renderer::Submit(textureShader, m_SquareVA,
 			glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.1f)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_LogoTexture->Bind();
@@ -265,8 +265,9 @@ class Sandbox : public Burnout::Application
 public: 
 	Sandbox()
 	{
-		//PushLayer(new ExampleLayer());
-		PushLayer(new Sandbox2D());
+		ExampleLayer* l = new ExampleLayer();
+		PushLayer(l);
+		//PushLayer(new Sandbox2D());
 
 	}
 	~Sandbox()

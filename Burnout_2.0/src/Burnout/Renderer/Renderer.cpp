@@ -3,8 +3,6 @@
 #include "Renderer2D.h"
 #include <glm/ext/matrix_clip_space.hpp>
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
 namespace Burnout
 {
 	Scope<Renderer::SceneData> Renderer::m_SceneData = CreateScope<Renderer::SceneData>();
@@ -42,11 +40,14 @@ namespace Burnout
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ModelMatrix", transform);
+		shader->SetMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
+		shader->SetMat4("u_ModelMatrix", transform);
+		shader->SetFloat4("u_Color", glm::vec4(1.f, 1.f, 1.f, 1.f));
+		shader->SetFloat("u_TilingFactor",1.f);
+
+
+		
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}
-
-
 }
