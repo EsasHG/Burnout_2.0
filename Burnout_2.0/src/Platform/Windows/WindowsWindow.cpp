@@ -170,7 +170,6 @@ namespace Burnout
 	{
 		BO_PROFILE_FUNCTION();
 
-
 		m_Context->SwapBuffers();
 		glfwPollEvents();
 	}
