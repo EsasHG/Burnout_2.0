@@ -7,8 +7,6 @@
 
 #include "Platform/OpenGL/OpenGLContext.h"
 
-
-
 namespace Burnout
 {
 	static bool s_GLFWInitiated = false;

@@ -13,6 +13,9 @@
     <Filter Include="src\Burnout\Core">
       <UniqueIdentifier>{E3220689-CF1B-25DB-F84D-0A60E4A504E7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Burnout\Debug">
+      <UniqueIdentifier>{61DAD6A9-CDF0-D43F-1668-606182BDA5C7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Burnout\Events">
       <UniqueIdentifier>{2F793CE8-1B5D-FD3D-84BD-F79070C0E7BF}</UniqueIdentifier>
     </Filter>
@@ -87,6 +90,9 @@
     <ClInclude Include="src\Burnout\Core\Window.h">
       <Filter>src\Burnout\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Burnout\Debug\Instrumentor.h">
+      <Filter>src\Burnout\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Burnout\Events\ApplicationEvent.h">
       <Filter>src\Burnout\Events</Filter>
     </ClInclude>
@@ -112,6 +118,9 @@
       <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\Renderer.h">
+      <Filter>src\Burnout\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Renderer\Renderer2D.h">
       <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\RendererAPI.h">
@@ -156,8 +165,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Burnout\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Cameras\FirstPersonCameraController.cpp">
@@ -191,6 +198,9 @@
       <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\Renderer.cpp">
+      <Filter>src\Burnout\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Renderer\Renderer2D.cpp">
       <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\RendererAPI.cpp">
@@ -235,6 +245,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Burnout\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>
