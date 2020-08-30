@@ -39,10 +39,8 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned indices[3] = { 0,1,2 };
-		Burnout::Ref<Burnout::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Burnout::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Burnout::Ref<Burnout::IndexBuffer> indexBuffer = Burnout::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
-
 
 		m_SquareVA = Burnout::VertexArray::Create();
 
@@ -65,8 +63,7 @@ public:
 
 		unsigned squareIndices[6] = { 0,1,2,2,3,0 };
 
-		Burnout::Ref<Burnout::IndexBuffer> squareIB;
-		squareIB.reset(Burnout::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Burnout::Ref<Burnout::IndexBuffer> squareIB = Burnout::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 
@@ -96,8 +93,7 @@ public:
 			0,1,2,2,3,0,
 			3,2,6,6,7,3,
 		};
-		Burnout::Ref<Burnout::IndexBuffer> cubeIB;
-		cubeIB.reset(Burnout::IndexBuffer::Create(cubeIndices, sizeof(cubeIndices) / sizeof(uint32_t)));
+		Burnout::Ref<Burnout::IndexBuffer> cubeIB = Burnout::IndexBuffer::Create(cubeIndices, sizeof(cubeIndices) / sizeof(uint32_t));
 		m_CubeVA->SetIndexBuffer(cubeIB);
 
 		std::string vertexSrc = R"(
@@ -275,9 +271,9 @@ class Sandbox : public Burnout::Application
 public: 
 	Sandbox()
 	{
-		ExampleLayer* l = new ExampleLayer();
-		PushLayer(l);
-		//PushLayer(new Sandbox2D());
+		//ExampleLayer* l = new ExampleLayer();
+		//PushLayer(l);
+		PushLayer(new Sandbox2D());
 
 	}
 	~Sandbox()

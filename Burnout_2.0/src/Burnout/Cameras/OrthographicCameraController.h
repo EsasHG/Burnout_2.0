@@ -20,7 +20,7 @@ namespace Burnout
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
 	private:
-		float m_ZoomLevel = 1.f;
+		float m_ZoomLevel = 10.f;
 
 		bool m_AllowRotation;
 		float m_Rotation;

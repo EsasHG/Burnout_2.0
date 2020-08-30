@@ -13,6 +13,7 @@ namespace Burnout
 
 		static void BeginScene(const Camera& camera);
 		static void EndScene();
+		static void Flush();
 
 
 		//primitives
