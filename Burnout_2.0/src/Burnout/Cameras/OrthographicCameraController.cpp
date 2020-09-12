@@ -10,12 +10,14 @@
 
 namespace Burnout
 {
+
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool allowRotation)
-		: CameraController(aspectRatio), m_AllowRotation(allowRotation), m_Rotation(0.f)
+		: CameraController(aspectRatio), m_AllowRotation(allowRotation), m_Rotation(0.f), m_Bounds({-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel})
 	{
 		BO_PROFILE_FUNCTION();
 
-		SetCameraProjMat(glm::ortho(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel));
+		//SetCameraProjMat(glm::ortho(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel));
+		SetCameraProjMat(glm::ortho(m_Bounds.Left, m_Bounds.Right, m_Bounds.Bottom, m_Bounds.Top));
 	}
 
 	void OrthographicCameraController::OnUpdate(Timestep& ts)
@@ -62,8 +64,8 @@ namespace Burnout
 
 		m_TranslationSpeed = m_ZoomLevel * 2.f;
 		
-		SetCameraProjMat(glm::ortho(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel, -1.0f, 1.0f));
-		
+		m_Bounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
+		SetCameraProjMat(glm::ortho(m_Bounds.Left, m_Bounds.Right,m_Bounds.Bottom, m_Bounds.Top, -1.0f, 1.0f));
 		return false;
 	}
 
@@ -72,7 +74,8 @@ namespace Burnout
 		BO_PROFILE_FUNCTION();
 
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-		SetCameraProjMat(glm::ortho(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel, -1.0f, 1.0f));
+		m_Bounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
+		SetCameraProjMat(glm::ortho(m_Bounds.Left, m_Bounds.Right, m_Bounds.Bottom, m_Bounds.Top, -1.0f, 1.0f));
 
 		return false;
 	}

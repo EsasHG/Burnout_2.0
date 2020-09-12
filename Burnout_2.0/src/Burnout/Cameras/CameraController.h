@@ -21,6 +21,8 @@ namespace Burnout
 		void SetCameraViewMat(const glm::mat4& mat) { m_Camera.m_ViewMat = mat;}
 		void SetCameraProjMat(const glm::mat4& mat) { m_Camera.m_ProjMat = mat; }
 
+		const glm::vec3& GetPosition() const { return m_Pos; }
+
 	protected:
 
 		float m_AspectRatio;
