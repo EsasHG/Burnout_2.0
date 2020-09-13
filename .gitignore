@@ -10,12 +10,5 @@ bin-int/
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
-Sandbox/BurnoutProfile-Runtime.json
-Sandbox/BurnoutProfile-Shutdown.json
-Sandbox/BurnoutProfile-Startup.json
-Sandbox/BurnoutProfile-Startup.json
-Sandbox/BurnoutProfile-Runtime.json
-Sandbox/BurnoutProfile-Shutdown.json
-Sandbox/BurnoutProfile-Runtime.json
-Sandbox/BurnoutProfile-Shutdown.json
-Sandbox/BurnoutProfile-Startup.json
+
+*.json

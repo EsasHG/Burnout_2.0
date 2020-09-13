@@ -16,11 +16,16 @@ void Sandbox2D::OnAttach()
 	BO_PROFILE_FUNCTION();
 
 	m_Texture = Burnout::Texture2D::Create("assets/textures/me.png");
+	m_SpriteSheet = Burnout::Texture2D::Create("assets/game/textures/colored_tilemap_packed.png");
+
+	m_TextureBow = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2(8, 5), glm::vec2(8, 8));
+	m_TextureBubble = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2(4, 2), glm::vec2(8, 8));
+	m_TextureHeart  = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2( 4, 3 ), glm::vec2( 8, 8 ), glm::vec2(3,1));
 
 	m_Particle.ColorBegin = { 254 / 255.f, 212 / 255.f, 123 / 255.f, 1.0f };
 	m_Particle.ColorEnd = { 254 / 255.f, 109 / 255.f, 41/ 255.f, 1.0f };
 	m_Particle.SizeBegin = 0.5f, m_Particle.SizeVariation = 0.3f, m_Particle.SizeEnd = 0.0f;
-	m_Particle.LifeTime = 5.0f;
+	m_Particle.LifeTime = 2.0f;
 	m_Particle.Velocity = { 0.0f, 0.0f };
 	m_Particle.VelocityVariation = { 3.0f, 1.0f };
 	m_Particle.Position = { 0.0f,0.0f };
@@ -47,6 +52,7 @@ void Sandbox2D::OnUpdate(Burnout::Timestep ts)
 		Burnout::RenderCommand::Clear();
 	}
 
+#if 0
 	{
 		static float rotation = 0.0f;
 		rotation += ts * 20.f;
@@ -84,6 +90,16 @@ void Sandbox2D::OnUpdate(Burnout::Timestep ts)
 
 		Burnout::Renderer2D::EndScene();
 	}
+#endif
+
+	Burnout::Renderer2D::BeginScene(m_OrthoCamera.GetCamera());
+
+	Burnout::Renderer2D::DrawQuad(glm::vec3(0.0f, 0.0f, -0.9f), glm::vec2(1.0f, 1.0f), m_TextureBow);
+	Burnout::Renderer2D::DrawQuad(glm::vec3(1.0f, 0.0f, -0.9f), glm::vec2(1.0f, 1.0f), m_TextureBubble);
+	Burnout::Renderer2D::DrawQuad(glm::vec3(0.0f, 1.0f, -0.9f), glm::vec2(3.0f, 1.0f), m_TextureHeart);
+
+	Burnout::Renderer2D::EndScene();
+	
 
 	if (Burnout::Input::IsMouseButtonPressed(BO_MOUSE_BUTTON_LEFT))
 	{
@@ -98,9 +114,10 @@ void Sandbox2D::OnUpdate(Burnout::Timestep ts)
 		x = (x / width) * bounds.GetWidth() - bounds.GetWidth() * 0.5f;
 		y = bounds.GetHeight() * 0.5 - (y / height) * bounds.GetHeight();
 		m_Particle.Position = { x + pos.x, y + pos.y };
-		for (int i = 0; i < 50; i++)
+		for (int i = 0; i < 15; i++)
 			m_ParticleSystem.Emit(m_Particle);
 	}
+	
 	m_ParticleSystem.OnUpdate(ts);
 	m_ParticleSystem.OnRender(m_OrthoCamera.GetCamera());
 }

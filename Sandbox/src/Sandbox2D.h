@@ -25,6 +25,8 @@ private:
 	Burnout::Ref<Burnout::Shader> m_FlatColorShader;
 
 	Burnout::Ref<Burnout::Texture2D> m_Texture;
+	Burnout::Ref<Burnout::Texture2D> m_SpriteSheet;
+	Burnout::Ref<Burnout::SubTexture2D> m_TextureBow, m_TextureBubble, m_TextureHeart;
 
 	glm::vec4 m_SquareColor = { 0.2f ,0.3f ,0.8f, 1.0f };
 

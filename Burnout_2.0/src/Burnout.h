@@ -1,6 +1,7 @@
 #pragma once
 
 //For use by Burnout Application
+#include "Burnout/Core/Core.h"
 
 #include "Burnout/Core/Application.h"
 #include "Burnout/Core/Layer.h"
@@ -21,6 +22,7 @@
 #include "Burnout/Renderer/Buffer.h"
 #include "Burnout/Renderer/Shader.h"
 #include "Burnout/Renderer/Texture.h"
+#include "Burnout/Renderer/SubTexture2D.h"
 #include "Burnout/Renderer/VertexArray.h"
 
 #include "Burnout/Cameras/FirstPersonCameraController.h"

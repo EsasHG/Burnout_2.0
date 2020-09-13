@@ -173,6 +173,7 @@
     <ClInclude Include="src\Burnout\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Burnout\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Burnout\Renderer\Shader.h" />
+    <ClInclude Include="src\Burnout\Renderer\SubTexture2D.h" />
     <ClInclude Include="src\Burnout\Renderer\Texture.h" />
     <ClInclude Include="src\Burnout\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="src\Burnout\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Burnout\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Burnout\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Burnout\Renderer\Texture.cpp" />
     <ClCompile Include="src\Burnout\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
