@@ -6,6 +6,22 @@
 
 #include "Burnout/Cameras/OrthographicCameraController.h"
 
+static const uint32_t s_MapWidth = 25;
+static const char* s_MapTiles =
+"WWWWWWWWWWWWWWWWWWWWWWWWW"
+"WWWWWWGGGGWWWWWWWWWWWWWWW"
+"WWWWGGGGGGGGGGGGGGGGWWWWW"
+"WWWWGGGGGGGGGGGWWWGGGWWWW"
+"WWWGGGGGGGGGGGGGWWGGGGWWW"
+"WWWGGGGGGGGGGGGGGGGGGGWWW"
+"WWWWWGGGGGGGGGGWGGGGGWWWW"
+"WWWWWWWWGGGGGGGGGGGGWWWWW"
+"WWWWWWGGGGGGGGGGGGWWWWWWW"
+"WWWWWGGGGGGGGGGGGGGGWWWWW"
+"WWWWWWWWWWGGGGGGGGGGGWWWW"
+"WWWWWWWWWGGGGGGGGGGWWWWWW"
+"WWWWWWWWWWWWWWWWWWWWWWWWW";
+
 
 Sandbox2D::Sandbox2D()
 	: Layer("Sandbox2D"), m_OrthoCamera(1280.f/720.f, true)
@@ -19,8 +35,14 @@ void Sandbox2D::OnAttach()
 	m_SpriteSheet = Burnout::Texture2D::Create("assets/game/textures/colored_tilemap_packed.png");
 
 	m_TextureBow = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2(8, 5), glm::vec2(8, 8));
-	m_TextureBubble = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2(4, 2), glm::vec2(8, 8));
+	m_TextureBubble = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2(1, 8), glm::vec2(8, 8));
 	m_TextureHeart  = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2( 4, 3 ), glm::vec2( 8, 8 ), glm::vec2(3,1));
+
+	m_MapWidth = s_MapWidth;
+	m_MapHeight = strlen(s_MapTiles) / s_MapWidth;
+
+	s_TextureMap['W'] = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2(13, 1), glm::vec2(8,8));
+	s_TextureMap['G'] = Burnout::SubTexture2D::CreateFromCoords(m_SpriteSheet, glm::vec2(1, 8), glm::vec2(8, 8));
 
 	m_Particle.ColorBegin = { 254 / 255.f, 212 / 255.f, 123 / 255.f, 1.0f };
 	m_Particle.ColorEnd = { 254 / 255.f, 109 / 255.f, 41/ 255.f, 1.0f };
@@ -94,9 +116,30 @@ void Sandbox2D::OnUpdate(Burnout::Timestep ts)
 
 	Burnout::Renderer2D::BeginScene(m_OrthoCamera.GetCamera());
 
-	Burnout::Renderer2D::DrawQuad(glm::vec3(0.0f, 0.0f, -0.9f), glm::vec2(1.0f, 1.0f), m_TextureBow);
-	Burnout::Renderer2D::DrawQuad(glm::vec3(1.0f, 0.0f, -0.9f), glm::vec2(1.0f, 1.0f), m_TextureBubble);
-	Burnout::Renderer2D::DrawQuad(glm::vec3(0.0f, 1.0f, -0.9f), glm::vec2(3.0f, 1.0f), m_TextureHeart);
+	for (uint32_t y = 0; y < m_MapHeight; y++)
+	{
+		for (uint32_t x = 0; x < m_MapWidth; x++)
+		{
+			char tileType = s_MapTiles[x + y * m_MapWidth];
+			Burnout::Ref<Burnout::SubTexture2D> texture;
+
+			if (s_TextureMap.find(tileType) != s_TextureMap.end())
+			{
+				texture = s_TextureMap[tileType];
+			}
+			else
+			{
+				texture = m_TextureBow;
+			}
+
+			Burnout::Renderer2D::DrawQuad(glm::vec3(x - m_MapWidth/2.f, m_MapHeight -  y - m_MapHeight / 2.f, -0.9f), glm::vec2(1.0f, 1.0f), texture);
+
+		}
+	}
+
+	//Burnout::Renderer2D::DrawQuad(glm::vec3(0.0f, 0.0f, -0.9f), glm::vec2(1.0f, 1.0f), m_TextureBow);
+//	Burnout::Renderer2D::DrawQuad(glm::vec3(1.0f, 0.0f, -0.9f), glm::vec2(1.0f, 1.0f), m_TextureBubble);
+	//Burnout::Renderer2D::DrawQuad(glm::vec3(0.0f, 1.0f, -0.9f), glm::vec2(3.0f, 1.0f), m_TextureHeart);
 
 	Burnout::Renderer2D::EndScene();
 	
