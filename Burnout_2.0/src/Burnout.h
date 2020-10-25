@@ -21,6 +21,7 @@
 
 #include "Burnout/Renderer/Buffer.h"
 #include "Burnout/Renderer/Shader.h"
+#include "Burnout/Renderer/Framebuffer.h"
 #include "Burnout/Renderer/Texture.h"
 #include "Burnout/Renderer/SubTexture2D.h"
 #include "Burnout/Renderer/VertexArray.h"

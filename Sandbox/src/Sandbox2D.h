@@ -23,6 +23,7 @@ private:
 	//temp
 	Burnout::Ref<Burnout::VertexArray> m_VertexArray;
 	Burnout::Ref<Burnout::Shader> m_FlatColorShader;
+	Burnout::Ref<Burnout::Framebuffer> m_Framebuffer;
 
 	Burnout::Ref<Burnout::Texture2D> m_Texture;
 	Burnout::Ref<Burnout::Texture2D> m_SpriteSheet;
