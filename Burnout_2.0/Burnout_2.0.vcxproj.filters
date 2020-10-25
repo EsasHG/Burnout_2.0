@@ -129,6 +129,9 @@
     <ClInclude Include="src\Burnout\Renderer\Shader.h">
       <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Burnout\Renderer\SubTexture2D.h">
+      <Filter>src\Burnout\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\Texture.h">
       <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
@@ -165,7 +168,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Burnout\Renderer\SubTexture2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Cameras\FirstPersonCameraController.cpp">
@@ -210,6 +212,9 @@
     <ClCompile Include="src\Burnout\Renderer\Shader.cpp">
       <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Burnout\Renderer\SubTexture2D.cpp">
+      <Filter>src\Burnout\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\Texture.cpp">
       <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
@@ -246,6 +251,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Burnout\Renderer\SubTexture2D.cpp" />
   </ItemGroup>
 </Project>
