@@ -18,6 +18,8 @@ namespace Burnout
 
 	void OpenGLFramebuffer::Invalidate()
 	{
+
+		BO_PROFILE_FUNCTION();
 		glCreateFramebuffers(1, &m_RendererID);
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererID);
 
@@ -43,11 +45,13 @@ namespace Burnout
 	
 	void OpenGLFramebuffer::Bind()
 	{
+		BO_PROFILE_FUNCTION();
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererID);
 	}
 
 	void OpenGLFramebuffer::Unbind()
 	{
+		BO_PROFILE_FUNCTION();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 }

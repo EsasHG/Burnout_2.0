@@ -150,7 +150,6 @@ void Sandbox2D::OnUpdate(Burnout::Timestep ts)
 	//Burnout::Renderer2D::DrawQuad(glm::vec3(0.0f, 1.0f, -0.9f), glm::vec2(3.0f, 1.0f), m_TextureHeart);
 
 	Burnout::Renderer2D::EndScene();
-	m_Framebuffer->Unbind();
 
 	if (Burnout::Input::IsMouseButtonPressed(BO_MOUSE_BUTTON_LEFT))
 	{
@@ -171,6 +170,8 @@ void Sandbox2D::OnUpdate(Burnout::Timestep ts)
 	
 	m_ParticleSystem.OnUpdate(ts);
 	m_ParticleSystem.OnRender(m_OrthoCamera.GetCamera());
+	m_Framebuffer->Unbind();
+
 }
 
 void Sandbox2D::OnImGuiRender()
@@ -263,7 +264,7 @@ void Sandbox2D::OnImGuiRender()
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 	
 		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
-		ImGui::Image((void*)textureID, ImVec2(1280.f, 720.f));
+		ImGui::Image((void*)textureID, ImVec2(1280.f, 720.f), ImVec2(0, 1), ImVec2(1, 0));
 		ImGui::End();
 	
 		ImGui::End();
@@ -278,11 +279,10 @@ void Sandbox2D::OnImGuiRender()
 		ImGui::Text("Quads: %d", stats.QuadCount);
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
 		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
-		ImGui::Image((void*)textureID, ImVec2(256, 256));
+		ImGui::Image((void*)textureID, ImVec2(256, 256),ImVec2(1,1), ImVec2(0,0));
 		ImGui::End();
 	}
 }
