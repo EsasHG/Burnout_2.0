@@ -1,7 +1,7 @@
 
 workspace "Burnout_2.0"
 	architecture "x64"
-	startproject "Sandbox"
+	startproject "Burnout-Editor"
 
 	configurations
 	{

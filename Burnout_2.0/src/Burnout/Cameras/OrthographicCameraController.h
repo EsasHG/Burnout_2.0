@@ -25,6 +25,8 @@ namespace Burnout
 		virtual void OnUpdate(Timestep& ts) override;
 		virtual void OnEvent(Event& e) override;
 
+		void OnResize(float width, float height);
+
 		float GetZoomLevel() const { return m_ZoomLevel; }
 		void SetZoomLevel(float level) { m_ZoomLevel = level; CalculateView(); }
 
