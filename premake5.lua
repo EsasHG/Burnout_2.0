@@ -146,3 +146,52 @@ project "Sandbox"
 		defines "BO_DIST"
 		runtime "Release"
 		optimize "on"
+
+
+		
+project "Burnout-Editor"
+location "Burnout-Editor"
+kind "ConsoleApp"
+language "C++"
+cppdialect "C++17"
+staticruntime "on"
+
+
+targetdir ("bin/" .. outputdir .. "/%{prj.name}");
+objdir ("bin-int/" .. outputdir .. "/%{prj.name}");
+
+files 
+{
+	"%{prj.name}/src/**.h",
+	"%{prj.name}/src/**.cpp"
+}
+
+includedirs
+{
+	"Burnout_2.0/vendor/spdlog/include",
+	"Burnout_2.0/src",
+	"Burnout_2.0/vendor",
+	"%{IncludeDirs.glm}"
+}
+
+links 
+{
+	"Burnout_2.0"
+}
+filter "system:windows"
+	systemversion "latest"
+
+filter "configurations:Debug"
+	defines "BO_DEBUG"
+	runtime "Debug"
+	symbols "on"
+
+filter "configurations:Release"
+	defines "BO_RELEASE"
+	runtime "Release"
+	optimize "on"
+
+filter "configurations:Dist"
+	defines "BO_DIST"
+	runtime "Release"
+	optimize "on"

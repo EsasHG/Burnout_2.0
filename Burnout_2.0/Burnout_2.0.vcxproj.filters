@@ -111,6 +111,9 @@
     <ClInclude Include="src\Burnout\Renderer\Buffer.h">
       <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Burnout\Renderer\Framebuffer.h">
+      <Filter>src\Burnout\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Burnout\Renderer\GraphicsContext.h">
       <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
@@ -144,6 +147,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -168,8 +174,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
-    <ClInclude Include="src\Burnout\Renderer\Framebuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Cameras\FirstPersonCameraController.cpp">
@@ -197,6 +201,9 @@
       <Filter>src\Burnout\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\Buffer.cpp">
+      <Filter>src\Burnout\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Renderer\Framebuffer.cpp">
       <Filter>src\Burnout\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\RenderCommand.cpp">
@@ -229,6 +236,9 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -253,7 +263,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
-    <ClCompile Include="src\Burnout\Renderer\Framebuffer.cpp" />
   </ItemGroup>
 </Project>

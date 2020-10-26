@@ -18,7 +18,7 @@ namespace Burnout
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Burnout App");
 		virtual ~Application();
 		void Run();
 
