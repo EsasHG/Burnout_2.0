@@ -25,6 +25,9 @@
     <Filter Include="src\Burnout\Renderer">
       <UniqueIdentifier>{B18F3AE0-9D1E-C4A9-463D-D8A432ABD44F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Burnout\Scene">
+      <UniqueIdentifier>{083DE5AA-7453-E340-BDCA-6E622920B4C8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -141,6 +144,12 @@
     <ClInclude Include="src\Burnout\Renderer\VertexArray.h">
       <Filter>src\Burnout\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Burnout\Scene\Components.h">
+      <Filter>src\Burnout\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Burnout\Scene\Scene.h">
+      <Filter>src\Burnout\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -226,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="src\Burnout\Renderer\VertexArray.cpp">
       <Filter>src\Burnout\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Burnout\Scene\Scene.cpp">
+      <Filter>src\Burnout\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>

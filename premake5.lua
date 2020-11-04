@@ -23,6 +23,7 @@ workspace "Burnout_2.0"
 	IncludeDirs["ImGui"] = "Burnout_2.0/vendor/imgui"
 	IncludeDirs["glm"] = "Burnout_2.0/vendor/glm"
 	IncludeDirs["stb_image"] = "Burnout_2.0/vendor/stb_image"
+	IncludeDirs["entt"] = "Burnout_2.0/vendor/entt/include"
 	
 	group "Dependencies"
 		include "Burnout_2.0/vendor/GLFW"
@@ -62,7 +63,8 @@ project "Burnout_2.0"
 		"%{IncludeDirs.Glad}",
 		"%{IncludeDirs.ImGui}",
 		"%{IncludeDirs.glm}",
-		"%{IncludeDirs.stb_image}"
+		"%{IncludeDirs.stb_image}",
+		"%{IncludeDirs.entt}"
 
 	}
 
@@ -122,7 +124,8 @@ project "Sandbox"
 		"Burnout_2.0/vendor/spdlog/include",
 		"Burnout_2.0/src",
 		"Burnout_2.0/vendor",
-		"%{IncludeDirs.glm}"
+		"%{IncludeDirs.glm}",
+		"%{IncludeDirs.entt}"
 	}
 
 	links 
@@ -171,7 +174,9 @@ includedirs
 	"Burnout_2.0/vendor/spdlog/include",
 	"Burnout_2.0/src",
 	"Burnout_2.0/vendor",
-	"%{IncludeDirs.glm}"
+	"%{IncludeDirs.glm}",
+	"%{IncludeDirs.entt}"
+
 }
 
 links 

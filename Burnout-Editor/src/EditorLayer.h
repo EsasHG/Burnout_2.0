@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Burnout.h"
+
 namespace Burnout
 {
 
@@ -28,6 +29,9 @@ class EditorLayer	: public Layer
 		Ref<Texture2D> m_Texture;
 		Ref<Texture2D> m_SpriteSheet;
 		Ref<SubTexture2D> m_TextureBow, m_TextureBubble, m_TextureHeart;
+
+		Ref<Scene> m_ActiveScene;
+		entt::entity m_SquareEntity;
 
 		glm::vec4 m_SquareColor = { 0.2f ,0.3f ,0.8f, 1.0f };
 
