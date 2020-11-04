@@ -7,6 +7,8 @@
 
 namespace Burnout
 {
+	class Entity;
+
 	class Scene
 	{
 	public :
@@ -15,14 +17,11 @@ namespace Burnout
 
 		void OnUpdate(Timestep ts);
 
-		entt::entity CreateEntity();
-
-		//TEMP 
-		entt::registry& Reg() { return m_Registry; }
+		Entity CreateEntity(const std::string& name = std::string());
 
 	private:
 		entt::registry m_Registry;
 
-
+		friend class Entity;
 	};
 }

@@ -31,7 +31,7 @@ class EditorLayer	: public Layer
 		Ref<SubTexture2D> m_TextureBow, m_TextureBubble, m_TextureHeart;
 
 		Ref<Scene> m_ActiveScene;
-		entt::entity m_SquareEntity;
+		Entity m_SquareEntity;
 
 		glm::vec4 m_SquareColor = { 0.2f ,0.3f ,0.8f, 1.0f };
 

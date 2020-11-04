@@ -16,6 +16,7 @@
 #include "Burnout/ImGui/ImGuiLayer.h"
 
 #include "Burnout/Scene/Scene.h"
+#include "Burnout/Scene/Entity.h"
 #include "Burnout/Scene/Components.h"
 
 // ********** Renderer **********
