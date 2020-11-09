@@ -73,12 +73,17 @@ namespace Burnout
 		square.AddComponent<SpriteRendererComponent>(glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});
 		m_SquareEntity = square;
 
+		m_CameraEntity = m_ActiveScene->CreateEntity("Camera Entity");
+		m_CameraEntity.AddComponent<CameraComponent>();
+
+		m_SecondCamera = m_ActiveScene->CreateEntity("Clip Space Camera");
+		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
+		cc.Primary = false;
 	}
 
 	void EditorLayer::OnDetach()
 	{
 		BO_PROFILE_FUNCTION();
-
 	}
 
 	void EditorLayer::OnUpdate(Timestep ts)
@@ -94,13 +99,8 @@ namespace Burnout
 		RenderCommand::SetClearColor({ 0.61f, 0.11f, 0.11f, 1 });
 		RenderCommand::Clear();
 		
-
-		Renderer2D::BeginScene(m_OrthoCamera.GetCamera());
-
 		//UpdateScene
 		m_ActiveScene->OnUpdate(ts);
-
-		Renderer2D::EndScene();
 
 		m_Framebuffer->Unbind();
 	}
@@ -190,15 +190,37 @@ namespace Burnout
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
+		if (m_SquareEntity)
+		{
 
-		ImGui::Separator();
-		ImGui::Text("%s", m_SquareEntity.GetComponent<TagComponent>().Tag.c_str());
-		glm::vec4& squareColor =  m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
-		
+			ImGui::Separator();
+			ImGui::Text("%s", m_SquareEntity.GetComponent<TagComponent>().Tag.c_str());
+			glm::vec4& squareColor =  m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
+			ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+			
+		}
+		ImGui::DragFloat3("Camera Transform", glm::value_ptr(
+			m_CameraEntity.GetComponent<TransformComponent>().Transform[3]));
+
+		if(ImGui::Checkbox("Camera A", &m_PrimaryCamera))
+		{
+			m_CameraEntity.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
+			m_SecondCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
+		}
+
+		{
+			auto& camera = m_SecondCamera.GetComponent<CameraComponent>().Camera;
+			float orthoSize = camera.GetOrthographicSize();
+			if (ImGui::DragFloat("Second Camera Ortho Size", &orthoSize))
+			{
+				camera.SetOrthographicSize(orthoSize);
+			}
+
+		}
+
+
+
 		ImGui::End();
-
-
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0,0, });
 		ImGui::Begin("Viewport");
 
@@ -212,6 +234,8 @@ namespace Burnout
 			m_Framebuffer->Resize(m_ViewportSize.x, m_ViewportSize.y);
 
 			m_OrthoCamera.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));

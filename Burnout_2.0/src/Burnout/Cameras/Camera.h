@@ -8,9 +8,13 @@ namespace Burnout
 	class Camera
 	{
 	public:
-		Camera() {}
+		Camera() = default;
+		Camera(const glm::mat4& projection)
+			: m_ProjMat(projection) {}
 		virtual ~Camera() = default;
 		
+
+		const glm::mat4& GetProjection() const { return m_ProjMat; }
 		glm::mat4 GetViewProjMat() const { return  m_ProjMat * m_ViewMat; } 
 
 	protected:
