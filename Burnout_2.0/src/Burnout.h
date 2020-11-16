@@ -17,6 +17,7 @@
 
 #include "Burnout/Scene/Scene.h"
 #include "Burnout/Scene/Entity.h"
+#include "Burnout/Scene/ScriptableEntity.h"
 #include "Burnout/Scene/Components.h"
 
 // ********** Renderer **********

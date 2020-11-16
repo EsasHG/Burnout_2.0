@@ -184,6 +184,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Burnout\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Burnout\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Burnout\Cameras\FirstPersonCameraController.cpp">
